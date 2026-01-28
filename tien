@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="'vi">
+<head>
+    <title>Khoa CNTT</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <table type="border-collapse:collapse">
+        <tr></tr>
+        <td rowspan="2"><img src="https://fit.neu.edu.vn/admin/uploads/FIT_small_c4d9fe0c64.png" width="100"></td>
+        <td>
+            <h1>KHOA CÔNG NGHỆ THÔNG TIN</h1>
+            <h2>TRƯỜNG ĐẠI HỌC KINH TẾ QUỐC DÂN</H1>
+        </td>
+    </table> <hr>
+    <h2>MỤC LỤC:</h2>
+    <ul style="list-style-type:disc, ;">
+        <li><a href="">Phần I: Giới thiệu Khoa</a></li>
+        <li><a href="">Phần II: Danh sách Ngành đạo tạo</a></li>
+        <li><a href="">Phần III: Đăng ký tư vấn</a></li>
+        <li><a href="">Phần IV: Sơ đồ đón tiếp</a></li>
+        <li><a href="">Phần V: Liên hệ & Bản đồ</a></li>
+    </ul>
+    <hr>
+    <h2>I. GIỚI THIỆU CHUNG</h2>
+    <p><strong>Khoa Công nghệ thông tin (FIT)</strong> tiền thân là Bộ môn Công nghệ thông tin được thành lập từ năm 2004, thuộc trường Công nghệ, Đại học Kinh tế Quốc dân. Khoa tập trung đào tạo chuyên sâu, cung cấp cho thị trường lao động hàng nghìn cử nhân thuộc lĩnh vực <em>Công nghệ thông tin</em> và <em>Khoa học máy tính.</em></p>
+    <p>Với đội ngũ giảng viên giàu kinh nghiệm, chúng tôi xin cam kết mang lại môi trường học tập:<strong>Năng động</strong> - <em>Sáng tạo</em> - <span style="color: blue;">Hội nhập</span>.</p>
+    <h2>II. CÁC NGÀNH ĐẠO TẠO</h2>
+    <table style="border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th rowspan="2" style="border: 1px solid black;background-color:blue;">STT</th>
+            <th rowspan="2" style="border: 1px solid black;background-color:blue;">Tên Ngành/Chương trình</th> 
+            <th colspan="3" style="border: 1px solid black;background-color:blue;">Thông tin tuyển sinh 2024</th>   
+        </tr>
+        <tr>
+            <th style="border: 1px solid black;background-color:paleturquoise"> Mã xét tuyển </th>
+            <th style="border: 1px solid black;background-color:paleturquoise"> Chỉ tiêu </th>
+            <th style="border: 1px solid black;background-color:paleturquoise"> Tổ hợp môn </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border: 1px solid black;text-align: center;">1</td>
+                <td style="border: 1px solid black"><strong>Công nghệ thông tin</strong>
+                   <br> <em>(Information Technology)</em>
+                </td>
+                <td style="border: 1px solid black;text-align: center;">IT</td>
+                <td style="border: 1px solid black;text-align: center;">250</td>
+                <td rowspan="2" style="border: 1px solid black;text-align: center;">A00,A01,<br>D01,D07</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;text-align: center;">2</td>
+                <td style="border: 1px solid black;"><strong>Khoa học máy tính</strong>
+                    <br><em>(Computer Science)</em></td>
+                <td style="border: 1px solid black;text-align: center;">CS</td>
+                <td style="border: 1px solid black;text-align: center;">120</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;text-align: center;">3</td>
+                <td style="border: 1px solid black;"><strong>An toàn thông tin</strong>
+                    <br><em>(Information Security)</em></td>
+                <td style="border: 1px solid black;text-align: center;">IS</td>
+                <td style="border: 1px solid black;text-align: center;">80</td>
+                <td rowspan="2" style="border: 1px solid black;text-align: center;">A00,A01,<br>D01</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;text-align: center;">4</td>
+                <td style="border: 1px solid black"><strong>Kỹ thuật phần mềm</strong><br><em>(Software Engineering)</em></td>
+                <td style="border: 1px solid black;text-align: center;">SE</td>
+                <td style="border: 1px solid black;text-align: center;">120</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3" style="border: 1px solid black;text-align: right;"><strong>Tổng chi tiêu:</strong></td>
+                <td colspan="2" style="border: 1px solid black;text-align: left;"><strong>570 Sinh viên</strong></td>
+            </tr>
+            </tfoot>
+    </table>
+    <h2>III. ĐĂNG KÝ TUYỂN SINH</h2>
+    <p><em>Điền thông tin vào biểu mẫu dưới đây để nhận tài liệu tư vấn:</em></p>
+        <form action="" method="get">
+            <fieldset>
+                <legend>Thông tin thí sinh</legend>
+            <p>
+            <strong>1.Họ và tên:</strong> <br>
+            <input type="text" placeholder="Nhập họ và tên đầy đủ..."> 
+            </p>
+            <p>
+            <strong>2.Email liên hệ:</strong><br>
+            <input type="email">  
+            </p>
+            
+            <p>
+                <strong>3.Nguyện vọng chính:</strong><br>
+                <input list="major" placeholder="--Chọn ngành quan tâm--">
+                <datalist id="major">
+                    <option value="Công nghệ thông tin">
+                    <option value="Khoa học máy tính">
+                    <option value="An toàn thông tin">
+                    <option value="Kỹ thuật máy tính">
+                </datalist>
+            </p>
+            <p>
+                <strong>4. Nhu cầu tư vấn học phí:</strong><br>
+                <input type="radio" name="hocphi" value="co" checked>Có <br>
+                <input type="radio" name="hocphi" value="khong">Không
+            </p>
+            <p>
+                <strong>5. Câu hỏi của bạn:</strong> <br>
+                <textarea  rows="7" cols="35" placeholder="Nhập nội dung thắc mắc..."></textarea>
+            </p>
+            <p>
+                <button type="submit" value="Gửi đăng ký">Gửi đăng ký</button>
+                <button type="submit" value="Nhập lại">Nhập lại</button>
+            </p>
+            </fieldset>
+        </form>
+    <h2>IV. SƠ ĐỒ VỊ TRÍ ĐÓN TIẾP (TẦNG 13 - NHÀ A1)</h2>
+    <p>Mô phỏng đường đi từ Thang máy đến Phòng tư vấn:</p>
+    <!--còn bản mô phòng nhé!!!-->
+    <svg width="900" height="300" >
+        <rect x="3" y="5" width="800" height="250" fill="white" stroke="black" stroke-width="3"></rect>
+    <!--Phòng tư vấn-->
+        <rect x="50" y="40" width="80" height="65" fill="#ffdede" stroke="red" stroke-width="2"></rect>
+        <text x="90" y="78" text-anchor="middle" fill="red" font-size="14" font-weight="bold" >P. TƯ VẤN</text>
+    <!--Phòng 1311-->
+        <rect x="135" y="40" width="80" height="65" fill="white" stroke="black" stroke-width="1"></rect>
+        <text x="175" y="78" text-anchor="middle" fill="black" font-size="14" >P.1311</text>
+    <!-- Hành lang chung -->
+      <rect x="49" y="107" width="580" height="80" fill="#eeeeee" />
+      <text x="350" y="155" text-anchor="middle" fill="#cccccc" font-size="19" >
+        HÀNH LANG CHUNG
+      </text>
+    <!--Thang máy-->
+      <rect x="626" y="108" width="50" height="78" fill="gray" stroke="black"></rect>
+      <text x="626" y="150" text-anchor="middle" fill="rgba(255, 255, 255, 0.847)" font-size="10" transform="rotate(-90 640 135)">THANG MÁY</text>
+    <!--đường nét đứt-->
+    <line x1="100" y1="130" x2="630" y2="127" stroke="blue" stroke-width="3" stroke-dasharray="7"/>
+    <line x1="103" y1="130" x2="125" y2="130" stroke="blue" stroke-width="3" stroke-dasharray="7" transform="rotate(-90 100 129)" />
+    <!--bạn ở đây-->
+    <circle cx="590" cy="150" r="6" fill="blue" />
+    <text x="559" y="177" font-size="13" fill="blue">Bạn ở đây</text>
+    <!--mũi tên-->
+    <polygon points="90,115 100,100 110,115" fill="blue" />
+    </svg>
+    <h2>V. LIÊN HỆ & BẢN ĐỒ</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.813938375038!2d105.8424992!3d21.000094200000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac71752d8f79%3A0xd2ec575c01017afa!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBLaW5oIFThur8gUXXhu5FjIETDom4gKE5FVSk!5e0!3m2!1svi!2s!4v1768841948049!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+    <p>
+        <strong><em>KHOA CÔNG NGHỆ THÔNG TIN - TRƯỜNG ĐH KINH TẾ QUỐC DÂN</em></strong>
+    </p>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE5lc33JgfNWLZSsBbfQl1vtv9F40XPqz3Ag&s" width="20" height="18"><em>Địa chỉ: Phòng 1310-1312, Tòa A1, Đại học Kinh tế Quốc dân, 207 Giải Phóng, Hai Bà Trưng, Hà Nội.</em> <br>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeCHZrqoxDBO2qzWd3HV43QO7UrR_mu43fxw&s" width="20" height="18"><em>Điện thoại: 02436.280.280(6323)</em><br>
+    <img src="https://cdn-icons-png.flaticon.com/512/2250/2250206.png" width="20" height="18"><em>Email: kcntt@neu.edu.vn</em><br>
+    <img src="https://www.iconpacks.net/icons/2/free-website-icon-4946-thumb.png" width="20" height="18"><em>Website: <a href="">fit.neu.edu.vn</a></em><br>
+    <p>
+    <div style="background-color: #191818ea;color: rgb(255, 255, 255);text-align: center;width: 100%; height: 40px;line-height: 40px;" >
+        &copy 2026 Bản quyền thuộc về FIT-NEU.
+    </div>
+    </p>   
+</body>
+</body>
