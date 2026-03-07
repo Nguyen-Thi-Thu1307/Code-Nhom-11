@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nbreak Coffee</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f5f5f5;
+}
+
+.khung-trang{
+max-width:1200px;
+margin:auto;
+}
+
+header{
+background:#4b2e2b;
+color:white;
+}
+
+.header-khung{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:20px 0;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+text-decoration:none;
+color:white;
+}
+
+.logo-vong{
+width:40px;
+height:40px;
+border-radius:50%;
+background:#c8a27c;
+}
+
+.logo-text{
+font-size:20px;
+font-weight:bold;
+}
+
+.timkiem input{
+width:320px;
+padding:9px;
+border-radius:6px;
+border:none;
+outline:none;
+}
+
+.nut-dieu-huong button{
+margin-left:10px;
+padding:9px 15px;
+background:#6f4e37;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.nut-dieu-huong button:hover{
+background:#c8a27c;
+color:black;
+}
+
+.noi-dung{
+display:flex;
+margin-top:30px;
+}
+
+.menu-trai{
+width:225px;
+position:sticky;
+top:20px;
+}
+
+.menu-trai ul{
+list-style:none;
+padding:0;
+}
+
+.menu-trai li{
+background:#c8a27c;
+margin-bottom:10px;
+padding:12px;
+border-radius:6px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.menu-trai li:hover{
+background:#6f4e37;
+color:white;
+}
+
+.luoi-sanpham{
+flex:1;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-left:20px;
+}
+
+.sanpham{
+background:white;
+padding:12px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+transition:0.2s;
+}
+
+.sanpham:hover{
+transform:translateY(-5px);
+box-shadow:0 6px 14px rgba(0,0,0,0.15);
+}
+
+.sanpham-anh{
+width:100%;
+height:150px;
+object-fit:cover;
+margin-bottom:10px;
+border-radius:8px;
+}
+
+.sanpham-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.sanpham-info{
+flex:1;
+text-align:center;
+font-size:14px;
+}
+
+.sanpham button{
+width:28px;
+height:28px;
+border:none;
+background:#6f4e37;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+.sanpham button:hover{
+background:#4b2e2b;
+}
+
+.nut-zalo{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:#0068ff;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+cursor:pointer;
+}
+
+footer{
+margin-top:50px;
+background:#4b2e2b;
+color:white;
+padding:25px;
+}
+
+.ban-do{
+margin-top:15px;
+}
+
+iframe{
+width:100%;
+height:300px;
+border:0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="header-khung">
+
+<a href="Web-chinh.html" class="logo">
+<div class="logo-vong"></div>
+<div class="logo-text">Nbreak</div>
+</a>
+
+<div class="timkiem">
+<input type="text" placeholder="Nhập nội dung bạn tìm kiếm">
+</div>
+
+<div class="nut-dieu-huong">
+<button>Giới thiệu</button>
+<button>Giỏ hàng</button>
+</div>
+
+</div>
+</header>
+
+<div class="khung-trang">
+
+<div class="noi-dung">
+
+<div class="menu-trai">
+<ul>
+<li>Coffee</li>
+<li>Trà</li>
+<li>Đồ ăn vặt</li>
+<li>Combo</li>
+</ul>
+</div>
+
+<div class="luoi-sanpham">
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/caphesua.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Cà phê sữa</div>
+<div>25.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/bacxiu.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Bạc xỉu</div>
+<div>30.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/latte.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Latte</div>
+<div>35.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/matcha.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Matcha</div>
+<div>40.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/tradao.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Trà đào</div>
+<div>30.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/travai.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Trà vải</div>
+<div>30.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/tiramisu.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Bánh tiramisu</div>
+<div>45.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+<div class="sanpham">
+<img class="sanpham-anh" src="image/sukem.jpg">
+<div class="sanpham-bottom">
+<button>+</button>
+<div class="sanpham-info">
+<div>Bánh su kem</div>
+<div>25.000đ</div>
+</div>
+<button>-</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<div>
+Địa chỉ: Đại học Kinh tế Quốc dân, Hai Bà Trưng, Hà Nội  
+<br>
+SĐT: 0123 456 789  
+<br>
+Email: nbreakcoffee@gmail.com
+</div>
+
+<div class="ban-do">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.160774106355!2d105.83992427393314!3d21.000099188764928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac71752d8f79%3A0xd2ec575c01017afa!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBLaW5oIFThur8gUXXhu5FjIETDom4gKE5FVSk!5e1!3m2!1svi!2s!4v1772229861519!5m2!1svi!2s"></iframe>
+</div>
+
+</footer>
+
+</div>
+
+<div class="nut-zalo">
+Zalo
+</div>
+
+</body>
+</html>
