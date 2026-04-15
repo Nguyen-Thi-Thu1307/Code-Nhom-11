@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới thiệu - Nbreak</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/jpg" href="image/logo.jpg" />
+  </head>
+  <body>
+    <header>
+      <div class="header-khung">
+        <a href="trang_chu.html" class="logo">
+          <img src="image/logo.jpg" alt="Logo Nbreak" class="logo-vong" />
+          <div class="logo-text">Nbreak</div>
+        </a>
+
+        <div class="timkiem">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Nhập tên món bạn tìm..."
+            onkeypress="handleSearch(event)"
+          />
+          <span
+            class="search-icon"
+            onclick="performSearch()"
+            style="cursor: pointer"
+            >🔍</span
+          >
+        </div>
+
+        <div class="nut-dieu-huong">
+          <div class="nav-item-box dropdown">
+            <a href="trang_chu.html" class="nav-link-main">
+              <i class="fa-solid fa-utensils nav-icon"></i>
+              <span class="nav-text"
+                >Menu
+                <i class="fa-solid fa-chevron-down" style="font-size: 8px"></i
+              ></span>
+            </a>
+
+            <ul class="dropdown-content">
+              <li>
+                <a href="javascript:void(0)" data-category="coffee">Coffee</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="sinhto">Sinh tố</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="trasua">Trà sữa</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="nuocep">Nước ép</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="travi">Trà vị</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="doanvat"
+                  >Đồ ăn vặt</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="banhngot"
+                  >Bánh ngọt</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="combodoanvat"
+                  >Combo đồ ăn vặt</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="combodouong"
+                  >Combo đồ uống</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0)" data-category="combo">Combo</a>
+              </li>
+            </ul>
+          </div>
+
+          <a href="uu_dai.html" class="nav-item-box">
+            <i class="fa-solid fa-tags nav-icon"></i>
+            <span class="nav-text">Ưu đãi</span>
+          </a>
+
+          <a href="lien_he.html" class="nav-item-box">
+            <i class="fa-solid fa-phone-flip nav-icon"></i>
+            <span class="nav-text">Liên hệ</span>
+          </a>
+
+          <a
+            href="gioi_thieu.html"
+            class="nav-item-box active"
+            style="color: #c8a27c"
+          >
+            <i class="fa-solid fa-circle-info nav-icon"></i>
+            <span class="nav-text">Giới thiệu</span>
+          </a>
+
+          <a
+            href="javascript:void(0)"
+            onclick="openCheckout()"
+            class="nav-item-box cart-icon-fix"
+          >
+            <div class="icon-badge-container">
+              <span id="cart-count">0</span>
+              <i class="fa-solid fa-cart-shopping nav-icon"></i>
+            </div>
+            <span class="nav-text">Giỏ hàng</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="khung-trang">
+      <div class="trang-gioi-thieu">
+        <section class="banner-gioithieu">
+          <h1>Chào mừng bạn đến với Nbreak</h1>
+          <p>
+            Nơi dừng chân lý tưởng để nạp lại năng lượng cho ngày dài làm việc.
+          </p>
+        </section>
+
+        <div class="noi-dung-chi-tiet">
+          <div class="cot-van-ban">
+            <h2>Câu chuyện thương hiệu</h2>
+            <p>
+              Nbreak được ra đời từ sự kết hợp giữa 'N' (NEU) và 'Break' (Nghỉ
+              ngơi). Chúng tôi tin rằng, trong nhịp sống hối hả của kỷ nguyên
+              số, mỗi cá nhân đều xứng đáng có một khoảng lặng chất lượng để tái
+              tạo năng lượng.
+            </p>
+            <p>
+              Nbreak không chỉ bán những tách cà phê, những loại nước uống hay
+              món ăn vặt, chúng tôi bán một giải pháp thư giãn thông minh và
+              tiện lợi ngay tại đầu ngón tay bạn.
+              <strong>Nbreak</strong> tự hào là điểm hẹn quen thuộc tại khu vực
+              Giải Phóng.
+            </p>
+
+            <div class="tam-nhin-su-menh">
+              <div class="muc-nho">
+                <h3>🎯 Tầm nhìn</h3>
+                <p>
+                  Trở thành nền tảng dịch vụ ẩm thực trực tuyến hàng đầu, tiên
+                  phong ứng dụng công nghệ để cá nhân hóa trải nghiệm ăn uống
+                  của khách hàng trong kỷ nguyên số.
+                </p>
+              </div>
+
+              <div class="muc-nho">
+                <h3>🚀 Sứ mệnh</h3>
+                <p>
+                  Mang đến những sản phẩm "Tươi - Nhanh - Chuẩn vị" thông qua hệ
+                  thống đặt hàng tối ưu, giúp xóa bỏ mọi rào cản về thời gian và
+                  khoảng cách cho khách hàng.
+                </p>
+              </div>
+            </div>
+
+            <div class="gia-tri-cot-loi">
+              <h3>💎 Giá trị cốt lõi</h3>
+              <div class="grid-gia-tri">
+                <div class="the-gia-tri">
+                  <h4>🌱 Chất lượng nguyên bản</h4>
+                  <p>
+                    Tuyển chọn những hạt cà phê và nguyên liệu thượng hạng, đảm
+                    bảo hương vị nguyên bản và an toàn vệ sinh thực phẩm.
+                  </p>
+                </div>
+
+                <div class="the-gia-tri">
+                  <h4>💻 Tiên phong số hóa</h4>
+                  <p>
+                    Ứng dụng công nghệ để tối ưu quy trình đặt hàng, giúp khách
+                    hàng tiết kiệm thời gian và có trải nghiệm mua sắm hiện đại.
+                  </p>
+                </div>
+
+                <div class="the-gia-tri">
+                  <h4>🤝 Tận tâm phục vụ</h4>
+                  <p>
+                    Luôn lắng nghe và thấu hiểu để mang đến dịch vụ chu đáo,
+                    thân thiện, coi khách hàng như người thân trong gia đình.
+                  </p>
+                </div>
+
+                <div class="the-gia-tri">
+                  <h4>🚀 Nhanh chóng & Tiện lợi</h4>
+                  <p>
+                    Tối ưu hóa quy trình giao hàng và chuẩn bị món, đảm bảo sản
+                    phẩm đến tay khách hàng luôn tươi mới và đúng giờ.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cot-hinh-anh">
+            <div class="anh-minh-hoa"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">
+          <h3>☕ Nbreak</h3>
+          <p>Chất lượng – Đậm vị – Tinh tế</p>
+        </div>
+        <div class="footer-contact">
+          <h4>Liên hệ</h4>
+          <p>
+            📧 Email: <a href="mailto:contact@nbreak.com">contact@nbreak.com</a>
+          </p>
+          <p>☎️ Điện thoại: 0338 909 486</p>
+          <p>🏫 Địa chỉ: 207 Giải Phóng, Phường Bạch Mai, Hà Nội</p>
+        </div>
+        <div class="footer-social">
+          <h4>Theo dõi chúng tôi</h4>
+          <p>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Zalo</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><b>© 2026 Nbreak | NHÓM 11 – THIẾT KẾ WEB</b></p>
+      </div>
+    </footer>
+
+    <!-- Nút liên hệ nổi -->
+    <a href="tel:0338909486" class="nut-hotline">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
+        alt="Hotline"
+        width="30"
+        style="filter: brightness(0) invert(1)"
+      />
+    </a>
+    <a href="https://zalo.me/0338909486" target="_blank" class="nut-zalo"
+      >Zalo</a
+    >
+    <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="nut-messenger">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg"
+        alt="Messenger"
+        width="30"
+      />
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>

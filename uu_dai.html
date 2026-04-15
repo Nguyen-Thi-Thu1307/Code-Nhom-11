@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ưu đãi đặc biệt - Nbreak</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/jpg" href="image/logo.jpg" />
+    <style>
+      /* CSS bổ sung dành riêng cho trang Ưu đãi để tạo hiệu ứng thẻ quà tặng */
+      .uudai-container {
+        padding: 40px 10%;
+        background-color: #fdfaf7;
+        min-height: 80vh;
+      }
+      .uudai-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .uudai-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+      .uudai-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .uudai-card:hover {
+        transform: translateY(-5px);
+      }
+      .uudai-image {
+        height: 180px;
+        background-color: #c8a27c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 40px;
+      }
+      .uudai-info {
+        padding: 20px;
+        text-align: center;
+      }
+      .uudai-info h3 {
+        color: #4b2e2b;
+        margin-bottom: 10px;
+      }
+      .uudai-info p {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+      .uudai-tag {
+        display: inline-block;
+        background: #ff4d4d;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-khung">
+        <a href="trang_chu.html" class="logo">
+          <img src="image/logo.jpg" alt="Logo Nbreak" class="logo-vong" />
+          <div class="logo-text">Nbreak</div>
+        </a>
+
+        <div class="timkiem">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Tìm kiếm ưu đãi..."
+          />
+          <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="nut-dieu-huong">
+          <div class="nav-item-box dropdown">
+            <a href="trang_chu.html" class="nav-link-main">
+              <i class="fa-solid fa-utensils nav-icon"></i>
+              <span class="nav-text"
+                >Menu
+                <i class="fa-solid fa-chevron-down" style="font-size: 8px"></i
+              ></span>
+            </a>
+            <ul class="dropdown-content">
+              <li><a href="trang_chu.html#coffee-section">Coffee</a></li>
+              <li><a href="trang_chu.html#douong-section">Đồ uống khác</a></li>
+              <li><a href="trang_chu.html#doanvat-section">Đồ ăn vặt</a></li>
+              <li><a href="trang_chu.html#combo-section">Combo</a></li>
+            </ul>
+          </div>
+
+          <a
+            href="uu_dai.html"
+            class="nav-item-box active"
+            style="color: #c8a27c"
+          >
+            <i class="fa-solid fa-tags nav-icon"></i>
+            <span class="nav-text">Ưu đãi</span>
+          </a>
+
+          <a href="lien_he.html" class="nav-item-box">
+            <i class="fa-solid fa-phone-flip nav-icon"></i>
+            <span class="nav-text">Liên hệ</span>
+          </a>
+
+          <a href="gioi_thieu.html" class="nav-item-box">
+            <i class="fa-solid fa-circle-info nav-icon"></i>
+            <span class="nav-text">Giới thiệu</span>
+          </a>
+
+         <a href="javascript:void(0)" onclick="openCheckout()" class="nav-item-box cart-icon-fix">
+    <div class="icon-badge-container">
+        <span id="cart-count">0</span> 
+        <i class="fa-solid fa-cart-shopping nav-icon"></i>
+    </div>
+    <span class="nav-text">Giỏ hàng</span>
+</a>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="uudai-container">
+      <div class="uudai-header">
+        <h1 style="color: #4b2e2b">Chương Trình Khuyến Mãi</h1>
+        <p>Đừng bỏ lỡ những ưu đãi hấp dẫn dành riêng cho bạn tại Nbreak</p>
+      </div>
+
+     <div class="uudai-grid">
+    <div class="uudai-card">
+        <div class="uudai-image">
+
+<div class="uudai-image" style="background-color: #c8a27c;">
+    <i class="fa-solid fa-mug-hot"></i>
+    <i class="fa-solid fa-plus" style="font-size: 15px; margin: 0 5px;"></i>
+    <i class="fa-solid fa-mug-hot"></i>
+</div>       
+</div>
+        <div class="uudai-info">
+            <span class="uudai-tag">HOT DEAL</span>
+            <h3>Mua 1 Tặng 1</h3>
+            <p>Áp dụng cho tất cả dòng Coffee khi mua trực tiếp tại quán vào khung giờ 7h - 9h sáng hàng ngày.</p>
+            <a href="trang_chu.html#coffee-section" class="btn-gioithieu" style="display: block; text-decoration: none; text-align: center;">Đến Menu Coffee</a>
+        </div>
+    </div>
+
+    <div class="uudai-card">
+    <div class="uudai-image" style="background-color: #4b2e2b;">
+        <i class="fa-solid fa-id-card"></i> 
+    </div>
+    <div class="uudai-info">
+        <span class="uudai-tag">GIẢM 20%</span>
+        <h3>Thành Viên Mới</h3>
+        <p>Giảm ngay 20% cho tổng hóa đơn lần đầu tiên đặt hàng qua website Nbreak.</p>
+        <a href="trang_chu.html" class="btn-gioithieu" style="display: block; text-decoration: none; text-align: center;">Đặt hàng ngay</a>
+    </div>
+</div>
+
+    <div class="uudai-card">
+        <div class="uudai-image" style="background-color: #8d6e63;">
+<i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div class="uudai-info">
+            <span class="uudai-tag" style="background: #2ecc71;">TIẾT KIỆM</span>
+            <h3>Combo Sáng Tạo</h3>
+            <p>Tiết kiệm lên đến 30k khi mua các gói Combo đồ uống kèm đồ ăn vặt.</p>
+            <a href="trang_chu.html#combo-section" class="btn-gioithieu" style="display: block; text-decoration: none; text-align: center;">Xem các Combo</a>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+          <div class="footer-left">
+            <h3>☕ Nbreak</h3>
+            <p>Chất lượng – Đậm vị – Tinh tế</p>
+          </div>
+          <div class="footer-contact">
+            <h4>Liên hệ</h4>
+            <p>
+              📧 Email: <a href="mailto:contact@nbreak.com">contact@nbreak.com</a>
+            </p>
+            <p>☎️ Điện thoại: 0123 456 789</p>
+            <p>🏫 Địa chỉ: 207 Giải Phóng, Phường Bạch Mai, Hà Nội</p>
+          </div>
+          <div class="footer-social">
+            <h4>Theo dõi chúng tôi</h4>
+            <p>
+              <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+              <a href="#">Zalo</a>
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p><b>© 2026 Nbreak | NHÓM 11 – THIẾT KẾ WEB</b></p>
+        </div>
+      </footer>
+    </div>
+
+    <a href="tel:0338909486" class="nut-hotline">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
+        alt="Hotline"
+        width="30"
+        style="filter: brightness(0) invert(1)"
+      />
+    </a>
+    <a href="https://zalo.me/0338909486" target="_blank" class="nut-zalo">
+      Zalo
+    </a>
+    <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="nut-messenger">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg"
+        alt="Messenger"
+        width="30"
+      />
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>

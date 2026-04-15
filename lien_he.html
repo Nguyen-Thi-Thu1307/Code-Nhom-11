@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Liên hệ - Nbreak</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/jpg" href="image/logo.jpg" />
+  </head>
+  <body>
+    <header>
+      <div class="header-khung">
+        <a href="trang_chu.html" class="logo">
+          <img src="image/logo.jpg" alt="Logo Nbreak" class="logo-vong" />
+          <div class="logo-text">Nbreak</div>
+        </a>
+
+        <div class="timkiem">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Nhập tên món bạn tìm..."
+            onkeypress="handleSearch(event)"
+          />
+          <span
+            class="search-icon"
+            onclick="performSearch()"
+            style="cursor: pointer"
+            >🔍</span
+          >
+        </div>
+
+        <div class="nut-dieu-huong">
+          <div class="nav-item-box dropdown">
+            <a href="trang_chu.html" class="nav-link-main">
+              <i class="fa-solid fa-utensils nav-icon"></i>
+              <span class="nav-text"
+                >Menu
+                <i class="fa-solid fa-chevron-down" style="font-size: 8px"></i
+              ></span>
+            </a>
+            <ul class="dropdown-content">
+              <li><a href="trang_chu.html#coffee-section">Coffee</a></li>
+              <li><a href="trang_chu.html#douong-section">Đồ uống khác</a></li>
+              <li><a href="trang_chu.html#doanvat-section">Đồ ăn vặt</a></li>
+              <li><a href="trang_chu.html#combo-section">Combo</a></li>
+            </ul>
+          </div>
+
+          <a href="uu_dai.html" class="nav-item-box">
+            <i class="fa-solid fa-tags nav-icon"></i>
+            <span class="nav-text">Ưu đãi</span>
+          </a>
+
+          <a href="lien_he.html" class="nav-item-box active" style="color: #c8a27c">
+            <i class="fa-solid fa-phone-flip nav-icon"></i>
+            <span class="nav-text">Liên hệ</span>
+          </a>
+
+          <a href="gioi_thieu.html" class="nav-item-box">
+            <i class="fa-solid fa-circle-info nav-icon"></i>
+            <span class="nav-text">Giới thiệu</span>
+          </a>
+
+         <a href="javascript:void(0)" onclick="openCheckout()" class="nav-item-box cart-icon-fix">
+    <div class="icon-badge-container">
+        <span id="cart-count">0</span> <i class="fa-solid fa-cart-shopping nav-icon"></i>
+    </div>
+    <span class="nav-text">Giỏ hàng</span>
+</a>
+
+        </div>
+      </div>
+    </header>
+
+    <main style="padding: 50px 10%; display: flex; gap: 40px; background: #fff">
+      <div style="flex: 1">
+        <h2 style="color: #4b2e2b">Gửi lời nhắn cho Nbreak </h2>
+        <p>Chúng tôi rất mong nhận được phản hồi từ bạn để phục vụ tốt hơn!  Ý kiến của bạn giúp Nbreak hoàn thiện hơn mỗi ngày. </p>
+        <form
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+          "
+        >
+          <input
+            type="text"
+            placeholder="Họ tên"
+            style="padding: 12px; border: 1px solid #ddd; border-radius: 5px"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            style="padding: 12px; border: 1px solid #ddd; border-radius: 5px"
+          />
+          <textarea
+            placeholder="Nội dung!"
+            rows="5"
+            style="padding: 12px; border: 1px solid #ddd; border-radius: 5px"
+          ></textarea>
+          <button
+            type="button"
+            class="btn-gioithieu"
+            style="width: fit-content"
+            onclick="alert('Cảm ơn bạn đã liên hệ!')"
+          >
+            Gửi ngay
+          </button>
+        </form>
+      </div>
+
+      <div
+        style="flex: 1; background: #f9f9f9; padding: 30px; border-radius: 10px"
+      >
+        <h3>📍 Địa chỉ của chúng tôi</h3>
+        <p>207 Giải Phóng, Phường Bạch Mai, Hà Nội</p>
+        <p>📞 Hotline: 0123 456 789</p>
+<p> 📧 Email: <a href="mailto:contact@nbreak.com">contact@nbreak.com</a>
+            </p>       
+             <div
+          style="
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+          "
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.72970030538!2d105.84042577503073!3d21.00346948064037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac76ccab6bb3%3A0x67644818820ad2c!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaW5oIHThur8gUXXhu5FjIGTDom4!5e0!3m2!1svi!2s!4v1713000000000"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+          <div class="footer-left">
+            <h3>☕ Nbreak</h3>
+            <p>Chất lượng – Đậm vị – Tinh tế</p>
+          </div>
+          <div class="footer-contact">
+            <h4>Liên hệ</h4>
+            <p>
+              📧 Email: <a href="mailto:contact@nbreak.com">contact@nbreak.com</a>
+            </p>
+            <p>☎️ Điện thoại: 0123 456 789</p>
+            <p>🏫 Địa chỉ: 207 Giải Phóng, Phường Bạch Mai, Hà Nội</p>
+          </div>
+          <div class="footer-social">
+            <h4>Theo dõi chúng tôi</h4>
+            <p>
+              <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+              <a href="#">Zalo</a>
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p><b>© 2026 Nbreak | NHÓM 11 – THIẾT KẾ WEB</b></p>
+        </div>
+      </footer>
+    </div>
+
+    <a href="tel:0338909486" class="nut-hotline">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
+        alt="Hotline"
+        width="30"
+        style="filter: brightness(0) invert(1)"
+      />
+    </a>
+    <a href="https://zalo.me/0338909486" target="_blank" class="nut-zalo">
+      Zalo
+    </a>
+    <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="nut-messenger">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg"
+        alt="Messenger"
+        width="30"
+      />
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>
