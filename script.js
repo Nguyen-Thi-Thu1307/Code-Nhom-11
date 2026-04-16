@@ -803,6 +803,81 @@ function createCheckoutPopup() {
   document.body.insertAdjacentHTML("beforeend", html);
 }
 
+function createProductDetailPopup() {
+  const html = `
+    <div id="product-detail-popup" class="product-detail-popup" onclick="if(event.target===this)closeProductDetail()">
+      <div class="product-detail-content">
+        <span class="product-detail-close" onclick="closeProductDetail()">&times;</span>
+        <div class="product-detail-inner">
+          <div class="product-detail-image">
+            <img id="detail-product-img" src="" alt="Ảnh sản phẩm" style="width:100%;border-radius:15px;object-fit:cover;max-height:300px;">
+          </div>
+          <div class="product-detail-info">
+            <h2 id="detail-product-name"></h2>
+            <div class="product-detail-price" id="detail-product-price"></div>
+            <div class="product-detail-desc" id="detail-product-desc"></div>
+            <div class="size-options" style="display:none;"></div>
+            <div id="product-options-panel" style="display:none;"></div>
+            <div class="quantity-selector">
+              <label>Số lượng:</label>
+              <div class="quantity-control">
+                <button onclick="decreaseDetailQty()">−</button>
+                <span id="detail-quantity">1</span>
+                <button onclick="increaseDetailQty()">+</button>
+              </div>
+            </div>
+            <button class="add-to-cart-detail" onclick="addDetailToCart()">🛒 Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+        <div class="suggested-products">
+          <h4>✨ Có thể bạn cũng thích</h4>
+          <div class="suggested-grid" id="suggested-grid"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", html);
+}
+ 
+function createSuccessPopup() {
+  const html = `
+    <div id="success-popup" class="popup" style="display:none;">
+      <div class="popup-content" style="text-align:center; padding:30px;">
+        <div style="font-size:60px; margin-bottom:10px;">🎉</div>
+        <h2 style="color:#2e7d32; margin-bottom:5px;">Đặt hàng thành công!</h2>
+        <p style="color:#666; margin-bottom:20px;">Cảm ơn bạn đã tin tưởng Nbreak ☕</p>
+ 
+        <div style="background:#f9f9f9; border-radius:12px; padding:15px; text-align:left; font-size:14px; line-height:2;">
+          <div><strong>👤 Tên:</strong> <span id="display-name"></span></div>
+          <div><strong>📞 Điện thoại:</strong> <span id="display-phone"></span></div>
+          <div><strong>📍 Địa chỉ:</strong> <span id="display-address"></span></div>
+          <div><strong>🚚 Giao hàng:</strong> <span id="display-delivery"></span></div>
+          <div><strong>💰 Phí ship:</strong> <span id="display-shipping"></span></div>
+          <div><strong>💳 Thanh toán:</strong> <span id="display-payment"></span></div>
+          <div style="margin-top:10px; padding-top:10px; border-top:1px solid #eee;">
+            <strong style="font-size:16px; color:#e67e22;">💵 Tổng cộng: <span id="display-total"></span></strong>
+          </div>
+        </div>
+ 
+        <p style="color:#999; font-size:13px; margin-top:15px;">
+          Tự động đóng sau <strong id="countdown-timer">10</strong> giây
+        </p>
+        <button
+          onclick="closeSuccessPopup()"
+          style="background:#4b2e2b; color:white; padding:12px 30px; border:none; border-radius:8px; font-size:15px; cursor:pointer; font-weight:bold; margin-top:5px;">
+          ✅ Đóng
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", html);
+}
+ 
+function closeSuccessPopup() {
+  const popup = document.getElementById("success-popup");
+  if (popup) popup.style.display = "none";
+}
+
 function updateShippingFee() {
   const distanceSelect = document.getElementById("delivery-distance");
   const feeDisplay = document.getElementById("shipping-fee-amount");
