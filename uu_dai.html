@@ -2,75 +2,19 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ưu đãi đặc biệt - Nbreak</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="thong_bao.css" />
+    <link rel="stylesheet" href="account.css" />
+    <link rel="stylesheet" href="history.css" />
+    <link rel="stylesheet" href="uu_dai.css" />
+    <link rel="stylesheet" href="menu.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link rel="icon" type="image/jpg" href="image/logo.jpg" />
-    <style>
-      /* CSS bổ sung dành riêng cho trang Ưu đãi để tạo hiệu ứng thẻ quà tặng */
-      .uudai-container {
-        padding: 40px 10%;
-        background-color: #fdfaf7;
-        min-height: 80vh;
-      }
-      .uudai-header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-      .uudai-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-      .uudai-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease;
-        display: flex;
-        flex-direction: column;
-      }
-      .uudai-card:hover {
-        transform: translateY(-5px);
-      }
-      .uudai-image {
-        height: 180px;
-        background-color: #c8a27c;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 40px;
-      }
-      .uudai-info {
-        padding: 20px;
-        text-align: center;
-      }
-      .uudai-info h3 {
-        color: #4b2e2b;
-        margin-bottom: 10px;
-      }
-      .uudai-info p {
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 20px;
-        line-height: 1.5;
-      }
-      .uudai-tag {
-        display: inline-block;
-        background: #ff4d4d;
-        color: white;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -85,13 +29,17 @@
             type="text"
             id="search-input"
             placeholder="Tìm kiếm ưu đãi..."
+            onkeypress="handleSearch(event)"
           />
-          <span class="search-icon">🔍</span>
+          <i
+            class="fa-solid fa-magnifying-glass search-icon"
+            onclick="performSearch()"
+          ></i>
         </div>
 
         <div class="nut-dieu-huong">
           <div class="nav-item-box dropdown">
-            <a href="trang_chu.html" class="nav-link-main">
+            <a href="menu.html" class="nav-link-main" style="color: #c8a27c">
               <i class="fa-solid fa-utensils nav-icon"></i>
               <span class="nav-text"
                 >Menu
@@ -99,18 +47,19 @@
               ></span>
             </a>
             <ul class="dropdown-content">
-              <li><a href="trang_chu.html#coffee-section">Coffee</a></li>
-              <li><a href="trang_chu.html#douong-section">Đồ uống khác</a></li>
-              <li><a href="trang_chu.html#doanvat-section">Đồ ăn vặt</a></li>
-              <li><a href="trang_chu.html#combo-section">Combo</a></li>
+              <li><a href="menu.html#coffee">Coffee</a></li>
+              <li><a href="menu.html#sinhto">Sinh tố</a></li>
+              <li><a href="menu.html#trasua">Trà sữa</a></li>
+              <li><a href="menu.html#nuocep">Nước ép</a></li>
+              <li><a href="menu.html#travi">Trà vị</a></li>
+              <li><a href="menu.html#doanvat">Đồ ăn vặt</a></li>
+              <li><a href="menu.html#banhngot">Bánh ngọt</a></li>
+              <li><a href="menu.html#combodoanvat">Combo đồ ăn vặt</a></li>
+              <li><a href="menu.html#combodouong">Combo đồ uống</a></li>
+              <li><a href="menu.html#combo">Combo</a></li>
             </ul>
           </div>
-
-          <a
-            href="uu_dai.html"
-            class="nav-item-box active"
-            style="color: #c8a27c"
-          >
+          <a href="uu_dai.html" class="nav-item-box" style="color: #c8a27c">
             <i class="fa-solid fa-tags nav-icon"></i>
             <span class="nav-text">Ưu đãi</span>
           </a>
@@ -125,97 +74,319 @@
             <span class="nav-text">Giới thiệu</span>
           </a>
 
-         <a href="javascript:void(0)" onclick="openCheckout()" class="nav-item-box cart-icon-fix">
-    <div class="icon-badge-container">
-        <span id="cart-count">0</span> 
-        <i class="fa-solid fa-cart-shopping nav-icon"></i>
-    </div>
-    <span class="nav-text">Giỏ hàng</span>
-</a>
+          <a
+            href="javascript:void(0)"
+            onclick="openCheckout()"
+            class="nav-item-box cart-icon-fix"
+          >
+            <div class="icon-badge-container">
+              <span id="cart-count">0</span>
+              <i class="fa-solid fa-cart-shopping nav-icon"></i>
+            </div>
+            <span class="nav-text">Giỏ hàng</span>
+          </a>
 
+          <!-- MỤC THÔNG BÁO -->
+          <div class="nav-item-box" onclick="openNotifications()">
+            <div class="icon-badge-container">
+              <span
+                id="notification-badge"
+                class="notification-badge"
+                style="display: none"
+                >0</span
+              >
+              <i class="fa-solid fa-bell nav-icon"></i>
+            </div>
+            <span class="nav-text">Thông báo</span>
+          </div>
+        </div>
+
+        <!-- NÚT TÀI KHOẢN -->
+        <div
+          class="nav-item-box"
+          id="account-btn"
+          onclick="toggleAccountMenu()"
+        >
+          <div class="icon-badge-container">
+            <i class="fa-solid fa-user nav-icon"></i>
+          </div>
+          <span class="nav-text" id="account-text">Tài khoản</span>
+
+          <!-- DROPDOWN TÀI KHOẢN -->
+          <div id="account-dropdown" class="account-dropdown">
+            <div class="account-header">
+              <i class="fa-solid fa-circle-user"></i>
+              <div>
+                <div id="dropdown-username">Khách hàng</div>
+                <div id="dropdown-email">Chưa đăng nhập</div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="javascript:void(0)" onclick="openProfile()">
+              <i class="fa-solid fa-id-card"></i> Thông tin cá nhân
+            </a>
+            <a href="javascript:void(0)" onclick="openOrderHistory()">
+              <i class="fa-solid fa-clock-rotate-left"></i> Đơn mua
+            </a>
+            <div class="dropdown-divider"></div>
+            <a
+              href="javascript:void(0)"
+              id="login-logout-btn"
+              onclick="openAuthModal()"
+            >
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <span id="login-logout-text">Đăng nhập</span>
+            </a>
+          </div>
         </div>
       </div>
     </header>
 
     <main class="uudai-container">
       <div class="uudai-header">
-        <h1 style="color: #4b2e2b">Chương Trình Khuyến Mãi</h1>
+        <h1>🎁 Chương Trình Khuyến Mãi</h1>
         <p>Đừng bỏ lỡ những ưu đãi hấp dẫn dành riêng cho bạn tại Nbreak</p>
       </div>
 
-     <div class="uudai-grid">
-    <div class="uudai-card">
-        <div class="uudai-image">
+      <div class="uudai-grid" id="promotions-grid">
+        <!-- Các ưu đãi sẽ được hiển thị động bằng JavaScript -->
+      </div>
 
-<div class="uudai-image" style="background-color: #c8a27c;">
-    <i class="fa-solid fa-mug-hot"></i>
-    <i class="fa-solid fa-plus" style="font-size: 15px; margin: 0 5px;"></i>
-    <i class="fa-solid fa-mug-hot"></i>
-</div>       
-</div>
-        <div class="uudai-info">
-            <span class="uudai-tag">HOT DEAL</span>
+      <!-- PHẦN MÔ TẢ CHI TIẾT VỀ ƯU ĐÃI -->
+      <div class="uudai-details">
+        <div class="uudai-details-header">
+          <h2>📌 Điều khoản & Điều kiện áp dụng</h2>
+          <p>Vui lòng đọc kỹ các thông tin dưới đây để nhận ưu đãi tốt nhất</p>
+        </div>
+
+        <div class="uudai-details-grid">
+          <!-- Chi tiết ưu đãi 1: Mua 1 tặng 1 -->
+          <div class="uudai-detail-card">
+            <div class="detail-icon">☕</div>
             <h3>Mua 1 Tặng 1</h3>
-            <p>Áp dụng cho tất cả dòng Coffee khi mua trực tiếp tại quán vào khung giờ 7h - 9h sáng hàng ngày.</p>
-            <a href="trang_chu.html#coffee-section" class="btn-gioithieu" style="display: block; text-decoration: none; text-align: center;">Đến Menu Coffee</a>
-        </div>
-    </div>
+            <div class="detail-content">
+              <p>
+                <strong>📅 Thời gian áp dụng:</strong> Hàng ngày, 7h00 - 9h00
+                sáng
+              </p>
+              <p>
+                <strong>📍 Phạm vi áp dụng:</strong> Tất cả các sản phẩm Coffee
+              </p>
+              <p>
+                <strong>🎁 Cách thức nhận:</strong> Mua bất kỳ 1 ly Coffee, được
+                tặng thêm 1 ly Coffee cùng loại hoặc khác loại.
+              </p>
+              <p>
+                <strong>⚠️ Lưu ý:</strong> Chỉ áp dụng khi mua trực tiếp tại
+                quán. Không áp dụng đồng thời với các chương trình khuyến mãi
+                khác.
+              </p>
+            </div>
+          </div>
 
-    <div class="uudai-card">
-    <div class="uudai-image" style="background-color: #4b2e2b;">
-        <i class="fa-solid fa-id-card"></i> 
-    </div>
-    <div class="uudai-info">
-        <span class="uudai-tag">GIẢM 20%</span>
-        <h3>Thành Viên Mới</h3>
-        <p>Giảm ngay 20% cho tổng hóa đơn lần đầu tiên đặt hàng qua website Nbreak.</p>
-        <a href="trang_chu.html" class="btn-gioithieu" style="display: block; text-decoration: none; text-align: center;">Đặt hàng ngay</a>
-    </div>
-</div>
+          <!-- Chi tiết ưu đãi 2: Thành viên mới -->
+          <div class="uudai-detail-card">
+            <div class="detail-icon">🎓</div>
+            <h3>Thành Viên Mới</h3>
+            <div class="detail-content">
+              <p>
+                <strong>📅 Thời gian áp dụng:</strong> Duy nhất lần đầu đặt hàng
+              </p>
+              <p>
+                <strong>📍 Phạm vi áp dụng:</strong> Toàn bộ sản phẩm trên
+                website
+              </p>
+              <p>
+                <strong>🎁 Cách thức nhận:</strong> Đăng ký tài khoản thành viên
+                và đặt hàng lần đầu tiên qua website Nbreak.
+              </p>
+              <p>
+                <strong>⚠️ Lưu ý:</strong> Giảm 20% tối đa 50.000đ. Áp dụng cho
+                đơn hàng từ 100.000đ.
+              </p>
+            </div>
+          </div>
 
-    <div class="uudai-card">
-        <div class="uudai-image" style="background-color: #8d6e63;">
-<i class="fa-solid fa-bag-shopping"></i>
-        </div>
-        <div class="uudai-info">
-            <span class="uudai-tag" style="background: #2ecc71;">TIẾT KIỆM</span>
+          <!-- Chi tiết ưu đãi 3: Combo tiết kiệm -->
+          <div class="uudai-detail-card">
+            <div class="detail-icon">🍱</div>
             <h3>Combo Sáng Tạo</h3>
-            <p>Tiết kiệm lên đến 30k khi mua các gói Combo đồ uống kèm đồ ăn vặt.</p>
-            <a href="trang_chu.html#combo-section" class="btn-gioithieu" style="display: block; text-decoration: none; text-align: center;">Xem các Combo</a>
+            <div class="detail-content">
+              <p>
+                <strong>📅 Thời gian áp dụng:</strong> Tất cả các ngày trong
+                tuần
+              </p>
+              <p>
+                <strong>📍 Phạm vi áp dụng:</strong> Các combo đồ uống + đồ ăn
+                vặt
+              </p>
+              <p>
+                <strong>🎁 Cách thức nhận:</strong> Chọn các món trong danh mục
+                Combo, hệ thống tự động tính giá ưu đãi.
+              </p>
+              <p>
+                <strong>⚠️ Lưu ý:</strong> Tiết kiệm từ 10.000đ - 30.000đ so với
+                mua lẻ. Có thể tùy chỉnh món trong combo.
+              </p>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+
+        <!-- ƯU ĐÃI ĐẶC BIỆT THEO NGÀY LỄ -->
+        <div class="seasonal-promos">
+          <h3>🎊 Ưu đãi đặc biệt theo mùa</h3>
+          <div class="seasonal-promos-grid">
+            <!-- Valentine 14/2 -->
+            <div class="seasonal-promo-card valentine">
+              <div class="promo-icon">💝</div>
+              <h4>Valentine 14/2</h4>
+              <div class="promo-date">📅 10/02 - 14/02</div>
+              <p>
+                💖 Tình yêu ngọt ngào - Giảm 15% tất cả đồ uống. Tặng kèm hoa
+                hồng cho đơn hàng từ 150k! 🌹
+              </p>
+              <span class="promo-discount">Giảm 15%</span>
+            </div>
+
+            <!-- Quốc tế Phụ nữ 8/3 -->
+            <div class="seasonal-promo-card women-day">
+              <div class="promo-icon">🌹</div>
+              <h4>Quốc tế Phụ nữ 8/3</h4>
+              <div class="promo-date">📅 01/03 - 08/03</div>
+              <p>
+                🌸 Tôn vinh phái đẹp - Giảm 20% cho hóa đơn từ 100k. Tặng hoa
+                cho khách hàng nữ! 💐
+              </p>
+              <span class="promo-discount">Giảm 20%</span>
+            </div>
+
+            <!-- Giải phóng miền Nam 30/4 -->
+            <div class="seasonal-promo-card liberation">
+              <div class="promo-icon">🎉</div>
+              <h4>Giải phóng miền Nam 30/4</h4>
+              <div class="promo-date">📅 28/04 - 02/05</div>
+              <p>
+                Chào mừng ngày thống nhất đất nước - Giảm 25% cho đơn hàng từ
+                150k! 🎊
+              </p>
+              <span class="promo-discount">Giảm 25%</span>
+            </div>
+
+            <!-- Quốc tế Lao động 1/5 -->
+            <div class="seasonal-promo-card labor">
+              <div class="promo-icon">📅</div>
+              <h4>Quốc tế Lao động 1/5</h4>
+              <div class="promo-date">📅 30/04 - 03/05</div>
+              <p>👷 Vinh danh người lao động - Giảm 20% toàn bộ sản phẩm! 🛠️</p>
+              <span class="promo-discount">Giảm 20%</span>
+            </div>
+
+            <!-- Tết Trung Thu -->
+            <div class="seasonal-promo-card mid-autumn">
+              <div class="promo-icon">🌕</div>
+              <h4>Tết Trung Thu</h4>
+              <div class="promo-date">📅 15/09 - 17/09</div>
+              <p>🥮 Đêm hội trăng rằm - Mua 1 tặng 1 cho tất cả Trà sữa! 🎑</p>
+              <span class="promo-discount">Mua 1 Tặng 1</span>
+            </div>
+
+            <!-- Quốc khánh 2/9 -->
+            <div class="seasonal-promo-card national">
+              <div class="promo-icon">📅</div>
+              <h4>Quốc khánh 2/9</h4>
+              <div class="promo-date">📅 01/09 - 03/09</div>
+              <p>🎆 Chào mừng Quốc khánh - Giảm 25% cho đơn hàng từ 200k! ✨</p>
+              <span class="promo-discount">Giảm 25%</span>
+            </div>
+
+            <!-- Halloween 31/10 -->
+            <div class="seasonal-promo-card halloween">
+              <div class="promo-icon">🎃</div>
+              <h4>Halloween 31/10</h4>
+              <div class="promo-date">📅 28/10 - 01/11</div>
+              <p>
+                👻 Ma thuật Halloween - Giảm 15% combo đồ uống + đồ ăn vặt! 🧙
+              </p>
+              <span class="promo-discount">Giảm 15%</span>
+            </div>
+
+            <!-- Black Friday -->
+            <div class="seasonal-promo-card black-friday">
+              <div class="promo-icon">🖤</div>
+              <h4>Black Friday</h4>
+              <div class="promo-date">📅 25/11 - 29/11</div>
+              <p>🛍️ Săn sale cực đỉnh - Giảm sốc 30% toàn bộ sản phẩm! 💥</p>
+              <span class="promo-discount">Giảm 30%</span>
+            </div>
+
+            <!-- Giáng Sinh 25/12 -->
+            <div class="seasonal-promo-card christmas">
+              <div class="promo-icon">🎄</div>
+              <h4>Giáng Sinh 25/12</h4>
+              <div class="promo-date">📅 20/12 - 25/12</div>
+              <p>
+                🎅 Mừng Chúa giáng sinh - Giảm 25% cho đơn hàng từ 200k. Tặng
+                quà Giáng sinh bất ngờ! 🎁
+              </p>
+              <span class="promo-discount">Giảm 25%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thông tin chung -->
+        <div class="uudai-general-info">
+          <h3>📋 Thông tin chung</h3>
+          <ul>
+            <li>
+              🕒 Các chương trình khuyến mãi có thể thay đổi theo từng thời
+              điểm, vui lòng theo dõi fanpage để cập nhật.
+            </li>
+            <li>
+              💳 Khách hàng có thể thanh toán bằng tiền mặt (COD) hoặc chuyển
+              khoản ngân hàng qua mã QR.
+            </li>
+            <li>
+              🏪 Nhận hàng trực tiếp tại cửa hàng hoặc giao hàng tận nơi (phí
+              ship theo khoảng cách).
+            </li>
+            <li>
+              📞 Mọi thắc mắc vui lòng liên hệ hotline:
+              <strong>0123 456 789</strong> để được hỗ trợ.
+            </li>
+          </ul>
+        </div>
+      </div>
     </main>
 
     <footer>
-        <div class="footer-container">
-          <div class="footer-left">
-            <h3>☕ Nbreak</h3>
-            <p>Chất lượng – Đậm vị – Tinh tế</p>
-          </div>
-          <div class="footer-contact">
-            <h4>Liên hệ</h4>
-            <p>
-              📧 Email: <a href="mailto:contact@nbreak.com">contact@nbreak.com</a>
-            </p>
-            <p>☎️ Điện thoại: 0123 456 789</p>
-            <p>🏫 Địa chỉ: 207 Giải Phóng, Phường Bạch Mai, Hà Nội</p>
-          </div>
-          <div class="footer-social">
-            <h4>Theo dõi chúng tôi</h4>
-            <p>
-              <a href="#">Facebook</a> | <a href="#">Instagram</a> |
-              <a href="#">Zalo</a>
-            </p>
-          </div>
+      <div class="footer-container">
+        <div class="footer-left">
+          <h3>☕ Nbreak</h3>
+          <p>Chất lượng – Đậm vị – Tinh tế</p>
         </div>
-        <div class="footer-bottom">
-          <p><b>© 2026 Nbreak | NHÓM 11 – THIẾT KẾ WEB</b></p>
+        <div class="footer-contact">
+          <h4>Liên hệ</h4>
+          <p>
+            📧 Email: <a href="mailto:contact@nbreak.com">contact@nbreak.com</a>
+          </p>
+          <p>☎️ Điện thoại: 0123 456 789</p>
+          <p>🏫 Địa chỉ: 207 Giải Phóng, Phường Bạch Mai, Hà Nội</p>
         </div>
-      </footer>
-    </div>
+        <div class="footer-social">
+          <h4>Theo dõi chúng tôi</h4>
+          <p>
+            <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+            <a href="#">Zalo</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><b>© 2026 Nbreak | NHÓM 11 – THIẾT KẾ WEB</b></p>
+      </div>
+    </footer>
 
-    <a href="tel:0338909486" class="nut-hotline">
+    <!-- Nút liên hệ nổi -->
+    <a href="tel:0123456789" class="nut-hotline">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
         alt="Hotline"
@@ -223,9 +394,9 @@
         style="filter: brightness(0) invert(1)"
       />
     </a>
-    <a href="https://zalo.me/0338909486" target="_blank" class="nut-zalo">
-      Zalo
-    </a>
+    <a href="https://zalo.me/0123456789" target="_blank" class="nut-zalo"
+      >Zalo</a
+    >
     <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="nut-messenger">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg"
@@ -234,6 +405,289 @@
       />
     </a>
 
+    <div
+      id="toast-container"
+      style="position: fixed; top: 20px; right: 20px; z-index: 10000"
+    ></div>
+
+    <script src="thong_bao.js"></script>
+    <script src="trang_chu.js"></script>
+    <script src="account.js"></script>
+    <script src="voucher.js"></script>
     <script src="script.js"></script>
+    <script>
+      // DỮ LIỆU ƯU ĐÃI THEO NGÀY ĐẶC BIỆT (CÓ THỜI GIAN)
+      const seasonalPromotions = [
+        {
+          id: "valentine",
+          name: "💝 Valentine 14/2",
+          description:
+            "Tình yêu ngọt ngào - Giảm 15% tất cả đồ uống. Tặng kèm hoa hồng cho đơn hàng từ 150k!",
+          discount: 15,
+          icon: "fa-solid fa-heart",
+          color: "linear-gradient(135deg, #ff6b6b, #ff8e8e)",
+          startDate: "2026-02-10",
+          endDate: "2026-02-14",
+          startTime: "00:00",
+          endTime: "23:59",
+          category: "all",
+        },
+        {
+          id: "women-day",
+          name: "🌹 Quốc tế Phụ nữ 8/3",
+          description:
+            "Tôn vinh phái đẹp - Giảm 20% cho hóa đơn từ 100k. Tặng hoa cho khách hàng nữ!",
+          discount: 20,
+          icon: "fa-solid fa-female",
+          color: "linear-gradient(135deg, #e91e63, #f06292)",
+          startDate: "2026-03-01",
+          endDate: "2026-03-08",
+          startTime: "00:00",
+          endTime: "23:59",
+          minOrder: 100000,
+          category: "all",
+        },
+        {
+          id: "liberation-day",
+          name: "🎉 Giải phóng miền Nam 30/4",
+          description:
+            "Chào mừng ngày thống nhất đất nước - Giảm 25% cho đơn hàng từ 150k!",
+          discount: 25,
+          icon: "fa-solid fa-flag",
+          color: "linear-gradient(135deg, #d32f2f, #f44336)",
+          startDate: "2026-04-28",
+          endDate: "2026-05-02",
+          startTime: "00:00",
+          endTime: "23:59",
+          minOrder: 150000,
+          category: "all",
+        },
+        {
+          id: "labor-day",
+          name: "🇻🇳 Quốc tế Lao động 1/5",
+          description: "Vinh danh người lao động - Giảm 20% toàn bộ sản phẩm!",
+          discount: 20,
+          icon: "fa-solid fa-briefcase",
+          color: "linear-gradient(135deg, #1565c0, #42a5f5)",
+          startDate: "2026-04-30",
+          endDate: "2026-05-03",
+          startTime: "00:00",
+          endTime: "23:59",
+          category: "all",
+        },
+        {
+          id: "mid-autumn",
+          name: "🌕 Tết Trung Thu",
+          description: "Đêm hội trăng rằm - Mua 1 tặng 1 cho tất cả Trà sữa!",
+          type: "buy1get1",
+          icon: "fa-solid fa-moon",
+          color: "linear-gradient(135deg, #ff9800, #ffc107)",
+          startDate: "2026-09-15",
+          endDate: "2026-09-17",
+          startTime: "00:00",
+          endTime: "23:59",
+          category: "trasua",
+        },
+        {
+          id: "national-day",
+          name: "🇻🇳 Quốc khánh 2/9",
+          description: "Chào mừng Quốc khánh - Giảm 25% cho đơn hàng từ 200k!",
+          discount: 25,
+          icon: "fa-solid fa-crown",
+          color: "linear-gradient(135deg, #e65100, #ff9800)",
+          startDate: "2026-09-01",
+          endDate: "2026-09-03",
+          startTime: "00:00",
+          endTime: "23:59",
+          minOrder: 200000,
+          category: "all",
+        },
+        {
+          id: "halloween",
+          name: "🎃 Halloween 31/10",
+          description:
+            "Ma thuật Halloween - Giảm 15% combo đồ uống + đồ ăn vặt!",
+          discount: 15,
+          icon: "fa-solid fa-ghost",
+          color: "linear-gradient(135deg, #6a1b9a, #ab47bc)",
+          startDate: "2026-10-28",
+          endDate: "2026-11-01",
+          startTime: "00:00",
+          endTime: "23:59",
+          category: "combo",
+        },
+        {
+          id: "black-friday",
+          name: "🖤 Black Friday",
+          description: "Săn sale cực đỉnh - Giảm sốc 30% toàn bộ sản phẩm!",
+          discount: 30,
+          icon: "fa-solid fa-tag",
+          color: "linear-gradient(135deg, #212121, #424242)",
+          startDate: "2026-11-25",
+          endDate: "2026-11-29",
+          startTime: "00:00",
+          endTime: "23:59",
+          category: "all",
+        },
+        {
+          id: "christmas",
+          name: "🎄 Giáng Sinh 25/12",
+          description:
+            "Mừng Chúa giáng sinh - Giảm 25% cho đơn hàng từ 200k. Tặng quà Giáng sinh bất ngờ!",
+          discount: 25,
+          icon: "fa-solid fa-tree",
+          color: "linear-gradient(135deg, #2e7d32, #66bb6a)",
+          startDate: "2026-12-20",
+          endDate: "2026-12-25",
+          startTime: "00:00",
+          endTime: "23:59",
+          minOrder: 200000,
+          category: "all",
+        },
+      ];
+
+      // Ưu đãi thường xuyên (luôn hiển thị)
+      const regularPromotions = [
+        {
+          id: "student",
+          name: "👨‍🎓 Ưu đãi sinh viên",
+          description: "Giảm 10% khi xuất trình thẻ sinh viên",
+          discount: 10,
+          icon: "fa-solid fa-user-graduate",
+          color: "linear-gradient(135deg, #c8a27c, #a67c52)",
+          category: "all",
+          isPermanent: true,
+        },
+        {
+          id: "weekend",
+          name: "🎉 Cuối tuần vui vẻ",
+          description: "Giảm 10% cho đơn hàng từ 100k vào Thứ 7 & Chủ Nhật",
+          discount: 10,
+          minOrder: 100000,
+          icon: "fa-solid fa-calendar-week",
+          color: "linear-gradient(135deg, #e67e22, #d35400)",
+          category: "all",
+          isPermanent: true,
+        },
+        {
+          id: "combo",
+          name: "🍱 Combo tiết kiệm",
+          description: "Mua combo đồ uống + đồ ăn vặt tiết kiệm đến 30k",
+          icon: "fa-solid fa-bag-shopping",
+          color: "linear-gradient(135deg, #2ecc71, #27ae60)",
+          category: "combo",
+          isPermanent: true,
+        },
+      ];
+
+      // Hàm định dạng ngày tháng
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        return `${day}/${month}`;
+      }
+
+      // Hàm lấy thời gian còn lại
+      function getTimeRemaining(endDate, endTime = "23:59") {
+        const now = new Date();
+        const end = new Date(`${endDate}T${endTime}`);
+        const diff = end - now;
+
+        if (diff <= 0) return null;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % 86400000) / 3600000);
+
+        if (days > 0) return `còn ${days} ngày`;
+        if (hours > 0) return `còn ${hours} giờ`;
+        return `còn ${Math.floor(diff / 60000)} phút`;
+      }
+
+      // Kiểm tra ưu đãi có đang diễn ra không
+      function isPromotionActive(promo) {
+        if (promo.isPermanent) return true;
+        if (!promo.startDate || !promo.endDate) return true;
+
+        const today = new Date();
+        const start = new Date(promo.startDate);
+        const end = new Date(promo.endDate);
+        return today >= start && today <= end;
+      }
+
+      // Hiển thị danh sách ưu đãi
+      function displayPromotions() {
+        const grid = document.getElementById("promotions-grid");
+        if (!grid) return;
+
+        grid.innerHTML = "";
+
+        const activeSeasonal = seasonalPromotions.filter((p) =>
+          isPromotionActive(p),
+        );
+        const allPromotions = [...regularPromotions, ...activeSeasonal];
+
+        if (allPromotions.length === 0) {
+          grid.innerHTML =
+            '<p style="text-align:center; color:#999;">Hiện chưa có chương trình khuyến mãi nào</p>';
+          return;
+        }
+
+        allPromotions.forEach((promo) => {
+          const card = document.createElement("div");
+          card.className = "uudai-card";
+
+          const isSeasonal =
+            promo.startDate && promo.endDate && !promo.isPermanent;
+          const timeRemaining = isSeasonal
+            ? getTimeRemaining(promo.endDate, promo.endTime)
+            : null;
+
+          let tagText = `✨ GIẢM ${promo.discount}%`;
+          if (promo.type === "buy1get1") tagText = "🎁 MUA 1 TẶNG 1";
+          if (promo.id === "student") tagText = "🎓 SINH VIÊN";
+          if (promo.id === "weekend") tagText = "🎉 CUỐI TUẦN";
+          if (promo.id === "combo") tagText = "🍱 TIẾT KIỆM";
+
+          // Tạo HTML hiển thị thời gian
+          let timeHtml = "";
+          if (isSeasonal) {
+            const startDate = formatDate(promo.startDate);
+            const endDate = formatDate(promo.endDate);
+            timeHtml = `
+        <div style="margin: 10px 0; padding: 8px; background: #f0f0f0; border-radius: 8px;">
+          <span style="font-size: 12px; color: #666;">📅 Thời gian: ${startDate} - ${endDate}</span>
+          ${timeRemaining ? `<span style="display: block; font-size: 11px; color: #e67e22; margin-top: 4px;">⏰ ${timeRemaining}</span>` : ""}
+        </div>
+      `;
+          } else if (promo.isPermanent) {
+            timeHtml = `
+        <div style="margin: 10px 0; padding: 8px; background: #e8f5e9; border-radius: 8px;">
+          <span style="font-size: 12px; color: #2e7d32;">🔄 Áp dụng thường xuyên</span>
+        </div>
+      `;
+          }
+
+          card.innerHTML = `
+      <div class="uudai-image" style="background: ${promo.color};">
+        <i class="${promo.icon}"></i>
+      </div>
+      <div class="uudai-info">
+        <span class="uudai-tag">${tagText}</span>
+        <h3>${promo.name}</h3>
+        <p>${promo.description}</p>
+        ${timeHtml}
+        <a href="trang_chu.html" class="btn-uu-dai" onclick="goToCategory('${promo.category}')">Nhận ngay →</a>
+      </div>
+    `;
+          grid.appendChild(card);
+        });
+      }
+
+      // Gọi khi trang load
+      document.addEventListener("DOMContentLoaded", () => {
+        displayPromotions();
+      });
+    </script>
   </body>
 </html>

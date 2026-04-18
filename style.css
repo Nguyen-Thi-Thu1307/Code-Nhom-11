@@ -19,12 +19,21 @@ body {
 .khung-trang {
   max-width: 1200px;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border: none; /* Bỏ viền */
+  border-radius: 0; /* Bỏ bo góc */
+  box-shadow: none; /* Bỏ đổ bóng */
 }
 
 header {
   background: #4b2e2b;
   color: white;
+  position: sticky; /* Hoặc dùng fixed */
+  top: 0;
+  z-index: 1000; /* Đảm bảo header luôn ở trên cùng */
+  width: 100%;
 }
 
 .header-khung {
@@ -33,7 +42,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 15px 0;
+  gap: 20px;
 }
 
 .logo {
@@ -42,6 +52,7 @@ header {
   text-decoration: none;
   transition: transform 0.2s ease;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .logo:hover {
@@ -99,23 +110,23 @@ button,
 .search-icon {
   position: absolute;
   right: 15px;
-  color: #888;
-  cursor: pointer; /* Chuyển thành hình bàn tay khi rê vào */
-  padding: 5px; /* Tăng diện tích để dễ bấm hơn */
-  transition: transform 0.2s;
-  pointer-events: auto !important; /* Đảm bảo icon nhận được sự kiện click */
+  color: #c8a27c; /* giống icon menu */
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
 .search-icon:hover {
-  transform: scale(1.2); /* Phóng to nhẹ khi rê chuột vào */
-  color: #4b2e2b; /* Đổi màu đậm hơn */
+  color: #4b2e2b; /* giống hover menu */
+  transform: scale(1.2);
 }
-
 /* Container chính */
 .nut-dieu-huong {
   display: flex;
-  align-items: flex-end; /* Giúp các dòng chữ bên dưới thẳng hàng nhau */
-  gap: 20px;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end; /* Căn các mục về bên phải */
+  flex: 1;
 }
 
 /* Container cho Dropdown */
@@ -295,12 +306,15 @@ button,
 .noi-dung {
   display: flex;
   margin-top: 30px;
+  gap: 30px;
+  padding-left: 0;
 }
 
 .menu-trai {
-  width: 225px;
-  position: sticky;
-  top: 20px;
+  width: 250px;
+  flex-shrink: 0;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .menu-trai ul {
@@ -357,7 +371,6 @@ button,
   align-items: start;
 }
 
-/* 2. GIỮ NGUYÊN STYLE THẺ SẢN PHẨM CỦA BẠN */
 .sanpham {
   background: white;
   padding: 12px;
@@ -371,19 +384,23 @@ button,
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: 2px solid #c8a27c;
 }
 
 .sanpham:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: #e67e22; /* Đổi màu viền khi hover */
 }
 
 .sanpham-anh {
   width: 100%;
-  height: 250px; /* Giữ chiều cao 150px gốc */
-  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  height: 250px;
+  object-fit: cover;
   margin-bottom: 10px;
   border-radius: 8px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .sanpham-bottom {
@@ -541,21 +558,36 @@ button,
   bottom: 210px !important;
 } /* Đẩy Hotline lên trên cùng */
 
-/* Định dạng tổng thể Footer */
+/* Footer full màn hình, không bo góc */
 footer {
-  background: #4b2e2b; /* Màu nâu đặc trưng của Nbreak */
+  background-color: #4b2e2b;
   color: white;
-  padding: 20px 0 20px 0;
+  padding: 30px 0;
+  width: 100% !important;
+  margin-top: auto; /* Đảm bảo luôn bám sát đáy */
 }
 
-/* Container chia cột */
+/* Container bên trong footer - giữ nội dung căn giữa */
 .footer-container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   gap: 30px;
   padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Phần bản quyền - cũng full width */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 20px 0;
+  border-top: 1px solid rgba(200, 162, 124, 0.3);
+  font-size: 14px;
+  color: #ccc;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Các khối nội dung */
@@ -592,16 +624,6 @@ footer {
 .footer-social a:hover {
   color: white;
   text-decoration: underline;
-}
-
-/* Phần bản quyền phía dưới */
-.footer-bottom {
-  text-align: center;
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(200, 162, 124, 0.3); /* Đường kẻ mờ */
-  font-size: 14px;
-  color: #ccc;
 }
 
 iframe {
@@ -649,7 +671,7 @@ iframe {
   }
 }
 
-.banner-gioithieu {
+.gioithieu {
   background: linear-gradient(135deg, #4b2e2b 0%, #6f4e37 100%);
   color: white;
   padding: 50px 20px;
@@ -667,6 +689,8 @@ iframe {
 
 .cot-van-ban {
   flex: 1;
+  text-align: justify; /* Căn đều hai bên */
+  line-height: 1.8;
 }
 .cot-hinh-anh {
   flex: 1;
@@ -1376,4 +1400,322 @@ img {
 
 .product-detail-desc .detail-section {
   margin-top: 12px;
+}
+
+/* =====================
+   BANNER QUẢNG CÁO CHUYỂN ĐỘNG
+   ===================== */
+.banner-slider {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0 !important; /* Bỏ bo góc */
+  box-shadow: none;
+  border: none;
+}
+
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
+.banner-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  visibility: hidden;
+}
+
+.banner-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 20px 50px;
+  color: white;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner-text h2 {
+  margin: 0 0 10px 0; /* trên:0, phải:0, dưới:10px, trái:0 */
+}
+
+.banner-text p {
+  margin: 0 0 15px 0;
+}
+
+.banner-btn {
+  display: inline-block;
+  background: white;
+  color: #4b2e2b;
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.banner-btn:hover {
+  transform: scale(1.05);
+  background: #f5f5f5;
+}
+
+.banner-icon {
+  font-size: 65px;
+  margin-left: 20px;
+  margin-right: 15px;
+  flex-shrink: 0;
+  min-width: 80px;
+  text-align: center;
+  align-self: flex-start; /* Đẩy icon lên phía trên */
+  margin-top: 20px; /* Cách mép trên một khoảng */
+}
+
+/* Nút điều khiển */
+.banner-prev,
+.banner-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.banner-prev:hover,
+.banner-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.banner-prev {
+  left: 15px;
+}
+
+.banner-next {
+  right: 15px;
+}
+
+/* Chấm tròn */
+.banner-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: white;
+  width: 25px;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner-container {
+    height: 220px;
+  }
+  .banner-text h2 {
+    font-size: 20px;
+  }
+  .banner-text p {
+    font-size: 12px;
+  }
+  .banner-icon {
+    font-size: 60px;
+  }
+  .banner-content {
+    padding: 0 70px 0 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-container {
+    height: 180px;
+  }
+  .banner-icon {
+    display: none;
+  }
+  .banner-text h2 {
+    font-size: 16px;
+  }
+}
+
+.banner-product {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.banner-product img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.banner-product img:hover {
+  transform: scale(1.05);
+}
+
+/* Đẩy nút sang bên phải */
+.banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner-text .banner-btn {
+  align-self: flex-end;
+  margin-top: 10px;
+  margin-right: 10px; /* Cách lề phải 10px */
+  margin-bottom: 30px; /* Cách lề dưới 30px */
+}
+
+/* Đồng bộ style cho tất cả nút trong banner */
+.banner-btn {
+  display: inline-block;
+  background: white;
+  color: #4b2e2b;
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+}
+
+.banner-btn:hover {
+  transform: scale(1.05);
+  background: #f5f5f5;
+  color: #4b2e2b;
+}
+
+/* Đảm bảo tất cả nút đều có cùng style */
+.banner-text .banner-btn {
+  align-self: flex-end;
+}
+
+/* Banner giới thiệu - nằm trong khung giữa */
+.banner-gioithieu {
+  background: linear-gradient(135deg, #4b2e2b 0%, #6f4e37 100%);
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 20px auto;
+  max-width: 900px; /* Giới hạn chiều rộng */
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.banner-gioithieu h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.banner-gioithieu p {
+  font-size: 18px;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+  .banner-gioithieu {
+    padding: 30px 15px;
+    border-radius: 15px;
+  }
+  .banner-gioithieu h1 {
+    font-size: 24px;
+  }
+  .banner-gioithieu p {
+    font-size: 14px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .header-khung {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .timkiem input {
+    width: 100%;
+  }
+
+  .nut-dieu-huong {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu-trai {
+    display: none; /* Ẩn menu trái */
+  }
+
+  .luoi-sanpham {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .sanpham img {
+    width: 100%;
+  }
+
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }

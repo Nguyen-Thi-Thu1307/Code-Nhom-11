@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Giới thiệu - Nbreak</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+    <title>Menu - Nbreak</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="thong_bao.css" />
     <link rel="stylesheet" href="account.css" />
     <link rel="stylesheet" href="history.css" />
     <link rel="stylesheet" href="uu_dai.css" />
     <link rel="stylesheet" href="menu.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <link rel="icon" type="image/jpg" href="image/logo.jpg" />
   </head>
   <body>
@@ -24,12 +24,11 @@
           <div class="logo-text">Nbreak</div>
         </a>
 
-        <!-- THANH TÌM KIẾM -->
         <div class="timkiem">
           <input
             type="text"
             id="search-input"
-            placeholder="Nhập sản phẩm bạn muốn tìm..."
+            placeholder="Tìm món bạn muốn..."
             onkeypress="handleSearch(event)"
           />
           <i
@@ -118,11 +117,7 @@
             <span class="nav-text">Liên hệ</span>
           </a>
 
-          <a
-            href="gioi_thieu.html"
-            class="nav-item-box active"
-            style="color: #c8a27c"
-          >
+          <a href="gioi_thieu.html" class="nav-item-box">
             <i class="fa-solid fa-circle-info nav-icon"></i>
             <span class="nav-text">Giới thiệu</span>
           </a>
@@ -152,9 +147,8 @@
             </div>
             <span class="nav-text">Thông báo</span>
           </div>
-        </div>
 
-        <!-- NÚT TÀI KHOẢN -->
+          <!-- NÚT TÀI KHOẢN -->
   <div class="nav-item-box" id="account-btn" onclick="toggleAccountMenu()">
     <div class="icon-badge-container">
       <i class="fa-solid fa-user nav-icon"></i>
@@ -185,92 +179,76 @@
         </div>
       </div>
     </header>
-
+    
     <!-- NỘI DUNG CHÍNH -->
-    <div class="khung-trang">
-      <div class="trang-gioi-thieu">
-        <section class="banner-gioithieu">
-          <h1>Chào mừng bạn đến với Nbreak</h1>
-          <p>
-            Nơi dừng chân lý tưởng để nạp lại năng lượng cho ngày dài làm việc.
-          </p>
-        </section>
+    <div class="menu-page">
+      <div class="menu-header">
+        <h1>☕ Menu Nbreak</h1>
+        <p>Khám phá những thức uống và món ăn hấp dẫn tại Nbreak</p>
+      </div>
 
-        <div class="noi-dung-chi-tiet">
-          <div class="cot-van-ban">
-            <h2>Câu chuyện thương hiệu</h2>
-            <p>
-              Nbreak được ra đời từ sự kết hợp giữa 'N' (NEU) và 'Break' (Nghỉ
-              ngơi). Chúng tôi tin rằng, trong nhịp sống hối hả của kỷ nguyên
-              số, mỗi cá nhân đều xứng đáng có một khoảng lặng chất lượng để tái
-              tạo năng lượng.
-            </p>
-            <p>
-              Nbreak không chỉ bán những tách cà phê, những loại nước uống hay
-              món ăn vặt, chúng tôi bán một giải pháp thư giãn thông minh và
-              tiện lợi ngay tại đầu ngón tay bạn.
-              <strong>Nbreak</strong> tự hào là điểm hẹn quen thuộc tại khu vực
-              Giải Phóng.
-            </p>
+      <!-- Coffee -->
+      <div id="coffee" class="menu-category">
+        <h2>☕ Coffee</h2>
+        <div class="menu-category-grid" id="coffee-grid"></div>
+      </div>
 
-            <div class="tam-nhin-su-menh">
-              <div class="muc-nho">
-                <h3>🎯 Tầm nhìn</h3>
-                <p>
-                  Trở thành nền tảng dịch vụ ẩm thực trực tuyến hàng đầu, tiên
-                  phong ứng dụng công nghệ để cá nhân hóa trải nghiệm ăn uống
-                  của khách hàng trong kỷ nguyên số.
-                </p>
-              </div>
-              <div class="muc-nho">
-                <h3>🚀 Sứ mệnh</h3>
-                <p>
-                  Mang đến những sản phẩm "Tươi - Nhanh - Chuẩn vị" thông qua hệ
-                  thống đặt hàng tối ưu, giúp xóa bỏ mọi rào cản về thời gian và
-                  khoảng cách cho khách hàng.
-                </p>
-              </div>
-            </div>
+      <!-- Sinh tố -->
+      <div id="sinhto" class="menu-category">
+        <h2>🥤 Sinh tố</h2>
+        <div class="menu-category-grid" id="sinhto-grid"></div>
+      </div>
 
-            <div class="gia-tri-cot-loi">
-              <h3>💎 Giá trị cốt lõi</h3>
-              <div class="grid-gia-tri">
-                <div class="the-gia-tri">
-                  <h4>🌱 Chất lượng nguyên bản</h4>
-                  <p>
-                    Tuyển chọn những hạt cà phê và nguyên liệu thượng hạng, đảm
-                    bảo hương vị nguyên bản và an toàn vệ sinh thực phẩm.
-                  </p>
-                </div>
-                <div class="the-gia-tri">
-                  <h4>💻 Tiên phong số hóa</h4>
-                  <p>
-                    Ứng dụng công nghệ để tối ưu quy trình đặt hàng, giúp khách
-                    hàng tiết kiệm thời gian và có trải nghiệm mua sắm hiện đại.
-                  </p>
-                </div>
-                <div class="the-gia-tri">
-                  <h4>🤝 Tận tâm phục vụ</h4>
-                  <p>
-                    Luôn lắng nghe và thấu hiểu để mang đến dịch vụ chu đáo,
-                    thân thiện, coi khách hàng như người thân trong gia đình.
-                  </p>
-                </div>
-                <div class="the-gia-tri">
-                  <h4>🚀 Nhanh chóng & Tiện lợi</h4>
-                  <p>
-                    Tối ưu hóa quy trình giao hàng và chuẩn bị món, đảm bảo sản
-                    phẩm đến tay khách hàng luôn tươi mới và đúng giờ.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Trà sữa -->
+      <div id="trasua" class="menu-category">
+        <h2>🧋 Trà sữa</h2>
+        <div class="menu-category-grid" id="trasua-grid"></div>
+      </div>
 
-          <div class="cot-hinh-anh">
-            <div class="anh-minh-hoa"></div>
-          </div>
-        </div>
+      <!-- Nước ép -->
+      <div id="nuocep" class="menu-category">
+        <h2>🍹 Nước ép</h2>
+        <div class="menu-category-grid" id="nuocep-grid"></div>
+      </div>
+
+      <!-- Trà vị -->
+      <div id="travi" class="menu-category">
+        <h2>🍵 Trà vị</h2>
+        <div class="menu-category-grid" id="travi-grid"></div>
+      </div>
+
+      <!-- Đồ ăn vặt -->
+      <div id="doanvat" class="menu-category">
+        <h2>🍟 Đồ ăn vặt</h2>
+        <div class="menu-category-grid" id="doanvat-grid"></div>
+      </div>
+
+      <!-- Bánh ngọt -->
+      <div id="banhngot" class="menu-category">
+        <h2>🍰 Bánh ngọt</h2>
+        <div class="menu-category-grid" id="banhngot-grid"></div>
+      </div>
+
+      <!-- Combo đồ ăn vặt -->
+      <div id="combodoanvat" class="menu-category">
+        <h2>🍱 Combo đồ ăn vặt</h2>
+        <div class="menu-category-grid" id="combodoanvat-grid"></div>
+      </div>
+
+      <!-- Combo đồ uống -->
+      <div id="combodouong" class="menu-category">
+        <h2>🥤 Combo đồ uống</h2>
+        <div class="menu-category-grid" id="combodouong-grid"></div>
+      </div>
+
+      <!-- Combo -->
+      <div id="combo" class="menu-category">
+        <h2>🎁 Combo</h2>
+        <div class="menu-category-grid" id="combo-grid"></div>
+      </div>
+
+      <div style="text-align: center">
+        <a href="trang_chu.html" class="back-to-home">← Quay lại trang chủ</a>
       </div>
     </div>
 
@@ -524,5 +502,6 @@
     <script src="account.js"></script>
     <script src="voucher.js"></script>
     <script src="script.js"></script>
+    <script src="menu.js"></script>
   </body>
 </html>

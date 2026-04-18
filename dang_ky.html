@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Cafe - Đăng ký / Đăng nhập</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="thong_bao.css" />
+    <link rel="stylesheet" href="account.css" />
+    <link rel="stylesheet" href="history.css" />
+    <link rel="stylesheet" href="uu_dai.css" />
+    <link rel="stylesheet" href="menu.css" />
+    <style>
+      /* CSS bổ sung cho modal và form */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .modal-container {
+        background: white;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 450px;
+        max-height: 90%;
+        overflow-y: auto;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        background: #4b2e2b;
+        color: white;
+        border-radius: 16px 16px 0 0;
+      }
+
+      .modal-header h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+      }
+
+      .modal-close:hover {
+        opacity: 1;
+      }
+
+      .modal-body {
+        padding: 25px;
+      }
+
+      /* Tab chuyển đổi */
+      .auth-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+      }
+
+      .auth-tab-btn {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        background: #f0f0f0;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+        transition: all 0.2s;
+      }
+
+      .auth-tab-btn.active {
+        background: #4b2e2b;
+        color: white;
+      }
+
+      .auth-tab-btn:not(.active):hover {
+        background: #e0e0e0;
+      }
+
+      /* Form */
+      .auth-form {
+        display: none;
+      }
+
+      .auth-form.active {
+        display: block;
+      }
+
+      .auth-input {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 14px;
+        transition: border 0.2s;
+      }
+
+      .auth-input:focus {
+        outline: none;
+        border-color: #c8a27c;
+        box-shadow: 0 0 0 2px rgba(200, 162, 124, 0.2);
+      }
+
+      .auth-submit {
+        width: 100%;
+        padding: 12px;
+        background: #4b2e2b;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        font-size: 16px;
+        transition: background 0.2s;
+      }
+
+      .auth-submit:hover {
+        background: #6f4e37;
+      }
+
+      .auth-note {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 13px;
+        color: #666;
+      }
+
+      .auth-note a {
+        color: #e67e22;
+        text-decoration: none;
+      }
+
+      .auth-note a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Thanh menu điều hướng với icon -->
+      <nav class="menu-nav">
+        <div class="nav-item" data-page="home">
+          <div class="nav-icon">🏠</div>
+          <span class="nav-label">Trang chủ</span>
+        </div>
+        <div class="nav-item" data-page="offers">
+          <div class="nav-icon">🎁</div>
+          <span class="nav-label">Ưu đãi</span>
+        </div>
+        <div class="nav-item" data-page="intro">
+          <div class="nav-icon">📖</div>
+          <span class="nav-label">Giới thiệu</span>
+        </div>
+
+        <!-- Dropdown Tài khoản của tôi (kiểu Shopee) -->
+        <div class="nav-item dropdown-trigger" id="accountDropdownTrigger">
+          <div class="nav-icon" id="accountIcon">👤</div>
+          <span class="nav-label" id="accountLabel">Tài khoản</span>
+          <span class="dropdown-arrow">▼</span>
+        </div>
+      </nav>
+
+      <!-- Dropdown menu -->
+      <div class="dropdown-menu" id="dropdownMenu">
+        <div class="dropdown-item" data-action="profile">
+          <span class="dropdown-icon">👤</span>
+          <span>Thông tin cá nhân</span>
+        </div>
+        <div class="dropdown-item" data-action="orders">
+          <span class="dropdown-icon">📦</span>
+          <span>Đơn mua</span>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item" data-action="logout" id="logoutItem">
+          <span class="dropdown-icon">🚪</span>
+          <span>Đăng xuất</span>
+        </div>
+      </div>
+
+      <!-- Khu vực nội dung chính -->
+      <main class="main-content">
+        <!-- Header với trạng thái đăng nhập -->
+        <div class="content-header" id="contentHeader">
+          <div class="avatar-icon" id="headerAvatar">🧑‍🍳</div>
+          <div class="header-info" id="headerInfo">
+            <h2 id="greetingText">Chào mừng bạn đến với Cafe</h2>
+            <p id="userStatusText">
+              🔓 Chưa đăng nhập · Bạn vẫn có thể mua hàng
+            </p>
+          </div>
+          <button
+            class="login-btn"
+            id="loginBtn"
+            style="display: flex"
+            onclick="openAuthModal()"
+          >
+            🔐 Đăng nhập / Đăng ký
+          </button>
+          <div
+            class="user-info-header"
+            id="userInfoHeader"
+            style="display: none"
+          >
+            <span class="user-name-display" id="userNameDisplay"></span>
+          </div>
+        </div>
+
+        <!-- Tab chuyển đổi giữa Thông báo và Lịch sử -->
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="notifications">
+            🔔 Thông báo
+          </button>
+          <button class="tab-btn" data-tab="history-list">
+            📋 Lịch sử mua hàng
+          </button>
+        </div>
+
+        <!-- Danh sách thông báo -->
+        <div id="notificationsTab" class="tab-content active">
+          <div class="notifications-list" id="notificationsList"></div>
+        </div>
+
+        <!-- Danh sách lịch sử mua hàng -->
+        <div id="historyListTab" class="tab-content">
+          <div class="history-list" id="historyListContainer"></div>
+        </div>
+      </main>
+
+      <!-- Modal chi tiết đơn hàng -->
+      <div id="orderDetailModal" class="modal-overlay">
+        <div class="modal-container">
+          <div class="modal-header">
+            <h3>📦 Chi tiết đơn hàng</h3>
+            <button class="modal-close" onclick="closeOrderDetailModal()">
+              ✕
+            </button>
+          </div>
+          <div class="modal-body" id="orderDetailBody"></div>
+        </div>
+      </div>
+
+      <!-- Modal chi tiết ưu đãi -->
+      <div id="offerDetailModal" class="modal-overlay">
+        <div class="modal-container">
+          <div class="modal-header">
+            <h3>🎁 Chi tiết ưu đãi</h3>
+            <button class="modal-close" onclick="closeOfferDetailModal()">
+              ✕
+            </button>
+          </div>
+          <div class="modal-body" id="offerDetailBody"></div>
+        </div>
+      </div>
+
+      <!-- Modal Đăng nhập / Đăng ký (HIỂN THỊ NGAY KHI LOAD TRANG) -->
+      <div id="authModal" class="modal-overlay" style="display: flex">
+        <div class="modal-container" style="max-width: 450px">
+          <div class="modal-header">
+            <h3 id="authModalTitle">🔐 Đăng nhập / Đăng ký</h3>
+            <button class="modal-close" onclick="closeAuthModal()">✕</button>
+          </div>
+          <div class="modal-body">
+            <div class="auth-tabs">
+              <button class="auth-tab-btn active" data-auth-tab="login">
+                Đăng nhập
+              </button>
+              <button class="auth-tab-btn" data-auth-tab="register">
+                Đăng ký
+              </button>
+            </div>
+            <div id="loginForm" class="auth-form active">
+              <input
+                type="text"
+                id="loginUsername"
+                placeholder="Tên đăng nhập"
+                class="auth-input"
+              />
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Mật khẩu"
+                class="auth-input"
+              />
+              <button class="auth-submit" onclick="handleLogin()">
+                Đăng nhập
+              </button>
+              <p class="auth-note">
+                💡 Chưa có tài khoản?
+                <a href="javascript:void(0)" onclick="switchToRegister()"
+                  >Đăng ký ngay</a
+                >
+              </p>
+            </div>
+            <div id="registerForm" class="auth-form">
+              <input
+                type="text"
+                id="regFullname"
+                placeholder="Họ tên"
+                class="auth-input"
+              />
+              <input
+                type="text"
+                id="regUsername"
+                placeholder="Tên đăng nhập"
+                class="auth-input"
+              />
+              <input
+                type="email"
+                id="regEmail"
+                placeholder="Email"
+                class="auth-input"
+              />
+              <input
+                type="tel"
+                id="regPhone"
+                placeholder="Số điện thoại"
+                class="auth-input"
+              />
+              <input
+                type="password"
+                id="regPassword"
+                placeholder="Mật khẩu"
+                class="auth-input"
+              />
+              <input
+                type="password"
+                id="regConfirmPassword"
+                placeholder="Xác nhận mật khẩu"
+                class="auth-input"
+              />
+              <button class="auth-submit" onclick="handleRegister()">
+                Đăng ký
+              </button>
+              <p class="auth-note">
+                🔐 Đã có tài khoản?
+                <a href="javascript:void(0)" onclick="switchToLogin()"
+                  >Đăng nhập ngay</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Thông tin cá nhân (xem và sửa) -->
+      <div id="profileModal" class="modal-overlay">
+        <div class="modal-container" style="max-width: 500px">
+          <div class="modal-header">
+            <h3>👤 Thông tin cá nhân</h3>
+            <button class="modal-close" onclick="closeProfileModal()">✕</button>
+          </div>
+          <div class="modal-body" id="profileBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Xử lý tab đăng nhập/đăng ký
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabBtns = document.querySelectorAll(".auth-tab-btn");
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const tab = this.getAttribute("data-auth-tab");
+
+            // Active tab button
+            tabBtns.forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+
+            // Active form
+            document.getElementById("loginForm").classList.remove("active");
+            document.getElementById("registerForm").classList.remove("active");
+            if (tab === "login") {
+              document.getElementById("loginForm").classList.add("active");
+            } else {
+              document.getElementById("registerForm").classList.add("active");
+            }
+          });
+        });
+      });
+
+      function switchToRegister() {
+        document
+          .querySelector(".auth-tab-btn[data-auth-tab='register']")
+          .click();
+      }
+
+      function switchToLogin() {
+        document.querySelector(".auth-tab-btn[data-auth-tab='login']").click();
+      }
+
+      function closeAuthModal() {
+        document.getElementById("authModal").style.display = "none";
+        // Chuyển về trang chủ sau khi đóng
+        window.location.href = "trang_chu.html";
+      }
+
+      function handleLogin() {
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
+
+        if (!username || !password) {
+          alert("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!");
+          return;
+        }
+
+        // Lấy danh sách users từ localStorage
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const user = users.find(
+          (u) => u.username === username && u.password === password,
+        );
+
+        if (user) {
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          alert("Đăng nhập thành công!");
+          window.location.href = "trang_chu.html";
+        } else {
+          alert("Sai tên đăng nhập hoặc mật khẩu!");
+        }
+      }
+
+      function handleRegister() {
+        const fullname = document.getElementById("regFullname").value;
+        const username = document.getElementById("regUsername").value;
+        const email = document.getElementById("regEmail").value;
+        const phone = document.getElementById("regPhone").value;
+        const password = document.getElementById("regPassword").value;
+        const confirmPassword =
+          document.getElementById("regConfirmPassword").value;
+
+        if (!fullname || !username || !email || !phone || !password) {
+          alert("Vui lòng nhập đầy đủ thông tin!");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert("Mật khẩu xác nhận không khớp!");
+          return;
+        }
+
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+          alert("Email không hợp lệ!");
+          return;
+        }
+
+        // Lấy danh sách users
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Kiểm tra username đã tồn tại
+        if (users.find((u) => u.username === username)) {
+          alert("Tên đăng nhập đã tồn tại!");
+          return;
+        }
+
+        // Kiểm tra email đã tồn tại
+        if (users.find((u) => u.email === email)) {
+          alert("Email đã được đăng ký!");
+          return;
+        }
+
+        // Tạo user mới
+        const newUser = {
+          id: Date.now(),
+          fullname: fullname,
+          username: username,
+          email: email,
+          phone: phone,
+          password: password,
+          address: "",
+          createdAt: new Date().toISOString(),
+        };
+
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+        alert("Đăng ký thành công!");
+        window.location.href = "trang_chu.html";
+      }
+
+      // Các hàm giả lập cho các modal khác
+      function closeOrderDetailModal() {
+        document.getElementById("orderDetailModal").style.display = "none";
+      }
+
+      function closeOfferDetailModal() {
+        document.getElementById("offerDetailModal").style.display = "none";
+      }
+
+      function closeProfileModal() {
+        document.getElementById("profileModal").style.display = "none";
+      }
+    </script>
+    <script src="thong_bao.js"></script>
+    <script src="trang_chu.js"></script>
+    <script src="account.js"></script>
+    <script src="voucher.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

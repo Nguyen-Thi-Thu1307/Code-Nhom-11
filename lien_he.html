@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Liên hệ - Nbreak</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
+<link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="thong_bao.css">
+<link rel="stylesheet" href="account.css" />
+<link rel="stylesheet" href="history.css" />
+<link rel="stylesheet" href="uu_dai.css" />
+<link rel="stylesheet" href="menu.css"/>    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
@@ -18,38 +22,39 @@
           <div class="logo-text">Nbreak</div>
         </a>
 
+       <!-- THANH TÌM KIẾM -->
         <div class="timkiem">
           <input
             type="text"
             id="search-input"
-            placeholder="Nhập tên món bạn tìm..."
+            placeholder="Nhập sản phẩm bạn muốn tìm..."
             onkeypress="handleSearch(event)"
           />
-          <span
-            class="search-icon"
+          <i
+            class="fa-solid fa-magnifying-glass search-icon"
             onclick="performSearch()"
-            style="cursor: pointer"
-            >🔍</span
-          >
+          ></i>
         </div>
-
+        
         <div class="nut-dieu-huong">
-          <div class="nav-item-box dropdown">
-            <a href="trang_chu.html" class="nav-link-main">
-              <i class="fa-solid fa-utensils nav-icon"></i>
-              <span class="nav-text"
-                >Menu
-                <i class="fa-solid fa-chevron-down" style="font-size: 8px"></i
-              ></span>
-            </a>
-            <ul class="dropdown-content">
-              <li><a href="trang_chu.html#coffee-section">Coffee</a></li>
-              <li><a href="trang_chu.html#douong-section">Đồ uống khác</a></li>
-              <li><a href="trang_chu.html#doanvat-section">Đồ ăn vặt</a></li>
-              <li><a href="trang_chu.html#combo-section">Combo</a></li>
-            </ul>
-          </div>
-
+        <div class="nav-item-box dropdown">
+  <a href="menu.html" class="nav-link-main" style="color: #c8a27c">
+    <i class="fa-solid fa-utensils nav-icon"></i>
+    <span class="nav-text">Menu <i class="fa-solid fa-chevron-down" style="font-size: 8px"></i></span>
+  </a>
+  <ul class="dropdown-content">
+    <li><a href="menu.html#coffee">Coffee</a></li>
+    <li><a href="menu.html#sinhto">Sinh tố</a></li>
+    <li><a href="menu.html#trasua">Trà sữa</a></li>
+    <li><a href="menu.html#nuocep">Nước ép</a></li>
+    <li><a href="menu.html#travi">Trà vị</a></li>
+    <li><a href="menu.html#doanvat">Đồ ăn vặt</a></li>
+    <li><a href="menu.html#banhngot">Bánh ngọt</a></li>
+    <li><a href="menu.html#combodoanvat">Combo đồ ăn vặt</a></li>
+    <li><a href="menu.html#combodouong">Combo đồ uống</a></li>
+    <li><a href="menu.html#combo">Combo</a></li>
+  </ul>
+</div>
           <a href="uu_dai.html" class="nav-item-box">
             <i class="fa-solid fa-tags nav-icon"></i>
             <span class="nav-text">Ưu đãi</span>
@@ -72,6 +77,43 @@
     <span class="nav-text">Giỏ hàng</span>
 </a>
 
+<!-- MỤC THÔNG BÁO -->
+  <div class="nav-item-box" onclick="openNotifications()">
+    <div class="icon-badge-container">
+      <span id="notification-badge" class="notification-badge" style="display: none;">0</span>
+      <i class="fa-solid fa-bell nav-icon"></i>
+    </div>
+    <span class="nav-text">Thông báo</span>
+  </div>
+
+  <!-- NÚT TÀI KHOẢN -->
+  <div class="nav-item-box" id="account-btn" onclick="toggleAccountMenu()">
+    <div class="icon-badge-container">
+      <i class="fa-solid fa-user nav-icon"></i>
+    </div>
+    <span class="nav-text" id="account-text">Tài khoản</span>
+
+  <!-- DROPDOWN TÀI KHOẢN -->
+<div id="account-dropdown" class="account-dropdown">
+  <div class="account-header">
+    <i class="fa-solid fa-circle-user"></i>
+    <div>
+      <div id="dropdown-username">Khách hàng</div>
+      <div id="dropdown-email">Chưa đăng nhập</div>
+    </div>
+  </div>
+  <div class="dropdown-divider"></div>
+  <a href="javascript:void(0)" onclick="openProfile()">
+    <i class="fa-solid fa-id-card"></i> Thông tin cá nhân
+  </a>
+  <a href="javascript:void(0)" onclick="openOrderHistory()">
+    <i class="fa-solid fa-clock-rotate-left"></i> Đơn mua
+  </a>
+  <div class="dropdown-divider"></div>
+  <a href="javascript:void(0)" id="login-logout-btn" onclick="openAuthModal()">
+    <i class="fa-solid fa-right-to-bracket"></i> <span id="login-logout-text">Đăng nhập</span>
+  </a>
+</div>
         </div>
       </div>
     </header>
@@ -146,6 +188,164 @@
       </div>
     </main>
 
+    <div id="checkout-popup" class="popup">
+      <div class="popup-content">
+        <span
+          class="close"
+          onclick="closeCheckout()"
+          style="float: right; cursor: pointer; font-size: 24px"
+          >&times;</span
+        >
+        <h2>Xác nhận đơn hàng</h2>
+        <hr />
+        <div id="checkout-items" style="text-align: left; margin: 20px 0"></div>
+        <h3 id="checkout-total" style="color: #ff7a00"></h3>
+
+        <div
+          id="checkout-form-info"
+          style="text-align: left; margin-bottom: 20px"
+        >
+          <label>Họ tên khách hàng:</label>
+          <input
+            type="text"
+            id="customer-name"
+            placeholder="Nhập tên của bạn"
+            style="width: 100%; padding: 8px; margin: 5px 0 10px"
+          />
+
+          <label>Số điện thoại:</label>
+          <input
+            type="tel"
+            id="customer-phone"
+            placeholder="Nhập số điện thoại"
+            style="width: 100%; padding: 8px; margin: 5px 0 10px"
+          />
+
+          <label>Địa chỉ nhận hàng:</label>
+          <input
+            type="text"
+            id="customer-address"
+            placeholder="Số nhà, tên đường, phường/xã..."
+            style="width: 100%; padding: 8px; margin: 5px 0 10px"
+          />
+        </div>
+
+        <h4>Phương thức thanh toán</h4>
+        <div
+          class="payment-methods"
+          style="text-align: left; margin-bottom: 20px"
+        >
+          <label style="display: block; margin-bottom: 10px; cursor: pointer">
+            <input
+              type="radio"
+              name="payment"
+              value="cod"
+              checked
+              onclick="toggleQR(false)"
+            />
+            💵 Thanh toán khi nhận hàng (COD)
+          </label>
+          <label style="display: block; margin-bottom: 10px; cursor: pointer">
+            <input
+              type="radio"
+              name="payment"
+              value="bank"
+              onclick="toggleQR(true)"
+            />
+            💳 Chuyển khoản ngân hàng (QR Code)
+          </label>
+        </div>
+
+        <div
+          id="qr-container"
+          style="
+            display: none;
+            text-align: center;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px dashed #ccc;
+          "
+        >
+          <p style="font-size: 14px; margin-bottom: 10px">
+            Quét mã để thanh toán đơn hàng:
+          </p>
+          <img
+            src=""
+            alt="QR Code"
+            id="qr-image"
+            style="
+              width: 150px;
+              height: 150px;
+              border: 5px solid white;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            "
+          />
+          <p style="font-weight: bold; color: #4b2e2e; margin-top: 10px">
+            STK: 0123456789 - MB Bank
+          </p>
+        </div>
+
+        <button
+          onclick="confirmOrder()"
+          class="checkout-btn"
+          style="width: 100%; margin-top: 10px"
+        >
+          Xác nhận đặt hàng
+        </button>
+      </div>
+    </div>
+
+    <div id="success-popup" class="popup">
+      <div class="popup-content" style="text-align: center; line-height: 1.6">
+        <h2 style="color: #27ae60">🎉 Đặt hàng thành công!</h2>
+        <div
+          style="
+            background: #fdf2e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid #ff7a00;
+            text-align: left;
+          "
+        >
+          <p>
+            Người nhận:
+            <strong id="display-name" style="color: #4b2e2e">...</strong>
+          </p>
+          <p>
+            SĐT: <strong id="display-phone" style="color: #4b2e2e">...</strong>
+          </p>
+          <p>
+            Địa chỉ:
+            <strong id="display-address" style="color: #4b2e2e">...</strong>
+          </p>
+          <p>Trạng thái: <strong>Đang chuẩn bị hàng</strong></p>
+        </div>
+        <p>
+          Cửa sổ đóng sau
+          <span id="countdown-timer" style="font-weight: bold; color: red"
+            >10</span
+          >
+          giây.
+        </p>
+        <button
+          onclick="closeSuccessPopup()"
+          style="
+            background: #4b2e2e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          Tiếp tục mua sắm
+        </button>
+      </div>
+    </div>
+
     <footer>
         <div class="footer-container">
           <div class="footer-left">
@@ -174,7 +374,7 @@
       </footer>
     </div>
 
-    <a href="tel:0338909486" class="nut-hotline">
+    <a href="tel:0123456789" class="nut-hotline">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
         alt="Hotline"
@@ -182,7 +382,7 @@
         style="filter: brightness(0) invert(1)"
       />
     </a>
-    <a href="https://zalo.me/0338909486" target="_blank" class="nut-zalo">
+    <a href="https://zalo.me/0123456789" target="_blank" class="nut-zalo">
       Zalo
     </a>
     <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="nut-messenger">
@@ -193,6 +393,9 @@
       />
     </a>
 
-    <script src="script.js"></script>
-  </body>
+<script src="thong_bao.js"></script>
+    <script src="trang_chu.js"></script>
+    <script src="account.js"></script>
+    <script src="voucher.js"></script>
+    <script src="script.js"></script>  </body>
 </html>

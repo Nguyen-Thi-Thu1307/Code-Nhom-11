@@ -1,0 +1,282 @@
+/* =====================
+   TÀI KHOẢN NGƯỜI DÙNG - ACCOUNT CSS
+   ===================== */
+
+/* Dropdown tài khoản */
+.account-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  display: none;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.account-dropdown.show {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+.account-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #f9f9f9;
+}
+
+.account-header i {
+  font-size: 40px;
+  color: #c8a27c;
+}
+
+.account-header div {
+  flex: 1;
+}
+
+#dropdown-username {
+  font-weight: bold;
+  color: #4b2e2b;
+}
+
+#dropdown-email {
+  font-size: 12px;
+  color: #999;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #eee;
+  margin: 5px 0;
+}
+
+.account-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.account-dropdown a:hover {
+  background: #f5f5f5;
+}
+
+.account-dropdown a i {
+  width: 20px;
+  color: #c8a27c;
+}
+
+#account-btn {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Popup đăng nhập / đăng ký */
+#auth-popup .popup-content {
+  max-width: 400px;
+}
+
+#auth-popup h2 {
+  color: #4b2e2b;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#auth-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+#auth-popup button {
+  width: 100%;
+  padding: 12px;
+  background: #4b2e2b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#auth-popup button:hover {
+  background: #6f4e37;
+}
+
+#auth-popup a {
+  color: #e67e22;
+  text-decoration: none;
+}
+
+#auth-popup a:hover {
+  text-decoration: underline;
+}
+
+/* Popup thông tin cá nhân */
+#profile-popup .popup-content {
+  max-width: 450px;
+}
+
+#profile-popup h2 {
+  color: #4b2e2b;
+  text-align: center;
+}
+
+#profile-popup label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #4b2e2b;
+}
+
+#profile-popup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+#profile-popup input[readonly] {
+  background: #f5f5f5;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .account-dropdown {
+    width: 260px;
+    right: -50px;
+  }
+}
+
+/* Đảm bảo dropdown nằm dưới nút tài khoản */
+#account-btn {
+  position: relative;
+  cursor: pointer;
+}
+
+.account-dropdown {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  display: none;
+  overflow: hidden;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .account-dropdown {
+    top: 60px;
+    right: 10px;
+    width: 260px;
+  }
+}
+
+/* Popup đăng nhập / đăng ký */
+#auth-popup .popup-content {
+  max-width: 400px;
+}
+
+#auth-popup h2 {
+  margin-bottom: 20px;
+}
+
+#auth-popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+#auth-popup button {
+  width: 100%;
+  padding: 12px;
+  background: #4b2e2b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#auth-popup button:hover {
+  background: #6f4e37;
+}
+
+#auth-popup a {
+  color: #e67e22;
+  text-decoration: none;
+}
+
+#auth-popup a:hover {
+  text-decoration: underline;
+}
+
+/* Popup thông tin cá nhân */
+#profile-popup .popup-content {
+  max-width: 450px;
+}
+
+#profile-popup label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #4b2e2b;
+}
+
+#profile-popup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+#profile-popup input[readonly] {
+  background: #f5f5f5;
+  color: #999;
+}
+
+/* Popup xác nhận đăng xuất */
+.confirm-logout-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10002;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-logout-popup .confirm-content {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  max-width: 350px;
+  text-align: center;
+  animation: slideDown 0.3s ease;
+}

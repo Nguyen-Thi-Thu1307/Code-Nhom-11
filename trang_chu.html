@@ -8,7 +8,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="thong_bao.css" />
+    <link rel="stylesheet" href="account.css" />
+    <link rel="stylesheet" href="history.css" />
+    <link rel="stylesheet" href="uu_dai.css" />
+    <link rel="stylesheet" href="menu.css" />
     <link rel="icon" type="image/jpg" href="image/logo.jpg" />
   </head>
 
@@ -25,74 +30,37 @@
           <input
             type="text"
             id="search-input"
-            placeholder="Nhập tên món bạn tìm..."
+            placeholder="Nhập sản phẩm bạn muốn tìm..."
             onkeypress="handleSearch(event)"
           />
-          <span
-            class="search-icon"
+          <i
+            class="fa-solid fa-magnifying-glass search-icon"
             onclick="performSearch()"
-            style="cursor: pointer"
-            >🔍</span
-          >
+          ></i>
         </div>
+
         <div class="nut-dieu-huong">
-          <div class="nav-item-box dropdown">
-            <a
-              href="trang_chu.html#coffee-section"
-              class="nav-link-main active"
-              style="color: #c8a27c"
-            >
-              <i class="fa-solid fa-utensils nav-icon"></i>
-              <span class="nav-text"
-                >Menu
-                <i class="fa-solid fa-chevron-down" style="font-size: 8px"></i
-              ></span>
-            </a>
+       <div class="nav-item-box dropdown">
+  <a href="menu.html" class="nav-link-main" style="color: #c8a27c">
+    <i class="fa-solid fa-utensils nav-icon"></i>
+    <span class="nav-text">Menu <i class="fa-solid fa-chevron-down" style="font-size: 8px"></i></span>
+  </a>
+  <ul class="dropdown-content">
+    <li><a href="menu.html#coffee">Coffee</a></li>
+    <li><a href="menu.html#sinhto">Sinh tố</a></li>
+    <li><a href="menu.html#trasua">Trà sữa</a></li>
+    <li><a href="menu.html#nuocep">Nước ép</a></li>
+    <li><a href="menu.html#travi">Trà vị</a></li>
+    <li><a href="menu.html#doanvat">Đồ ăn vặt</a></li>
+    <li><a href="menu.html#banhngot">Bánh ngọt</a></li>
+    <li><a href="menu.html#combodoanvat">Combo đồ ăn vặt</a></li>
+    <li><a href="menu.html#combodouong">Combo đồ uống</a></li>
+    <li><a href="menu.html#combo">Combo</a></li>
+  </ul>
+</div>
 
-            <ul class="dropdown-content">
-              <li>
-                <a href="javascript:void(0)" data-category="coffee">Coffee</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="sinhto">Sinh tố</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="trasua">Trà sữa</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="nuocep">Nước ép</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="travi">Trà vị</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="doanvat"
-                  >Đồ ăn vặt</a
-                >
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="banhngot"
-                  >Bánh ngọt</a
-                >
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="combodoanvat"
-                  >Combo đồ ăn vặt</a
-                >
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="combodouong"
-                  >Combo đồ uống</a
-                >
-              </li>
-              <li>
-                <a href="javascript:void(0)" data-category="combo">Combo</a>
-              </li>
-            </ul>
-          </div>
-
-          <a href="uu_dai.html" class="nav-item-box">
-            <i class="fa-solid fa-gift nav-icon"></i>
+   <a href="uu_dai.html" class="nav-item-box">
+            <i class="fa-solid fa-tags nav-icon"></i>
             <span class="nav-text">Ưu đãi</span>
           </a>
 
@@ -117,9 +85,138 @@
             </div>
             <span class="nav-text">Giỏ hàng</span>
           </a>
+
+       <!-- NÚT THÔNG BÁO (GIỮ NGUYÊN CHỨC NĂNG POPUP) -->
+<div class="nav-item-box" onclick="openNotifications()">
+  <div class="icon-badge-container">
+    <span id="notification-badge" class="notification-badge" style="display: none;">0</span>
+    <i class="fa-solid fa-bell nav-icon"></i>
+  </div>
+  <span class="nav-text">Thông báo</span>
+</div>
+
+<!-- NÚT TÀI KHOẢN -->
+  <div class="nav-item-box" id="account-btn" onclick="toggleAccountMenu()">
+    <div class="icon-badge-container">
+      <i class="fa-solid fa-user nav-icon"></i>
+    </div>
+    <span class="nav-text" id="account-text">Tài khoản</span>
+
+  <!-- DROPDOWN TÀI KHOẢN -->
+<div id="account-dropdown" class="account-dropdown">
+  <div class="account-header">
+    <i class="fa-solid fa-circle-user"></i>
+    <div>
+      <div id="dropdown-username">Khách hàng</div>
+      <div id="dropdown-email">Chưa đăng nhập</div>
+    </div>
+  </div>
+  <div class="dropdown-divider"></div>
+  <a href="javascript:void(0)" onclick="openProfile()">
+    <i class="fa-solid fa-id-card"></i> Thông tin cá nhân
+  </a>
+  <a href="javascript:void(0)" onclick="openOrderHistory()">
+    <i class="fa-solid fa-clock-rotate-left"></i> Đơn mua
+  </a>
+  <div class="dropdown-divider"></div>
+  <a href="javascript:void(0)" id="login-logout-btn" onclick="openAuthModal()">
+    <i class="fa-solid fa-right-to-bracket"></i> <span id="login-logout-text">Đăng nhập</span>
+  </a>
+</div>
         </div>
       </div>
     </header>
+
+    <!-- BANNER QUẢNG CÁO CHUYỂN ĐỘNG -->
+    <div class="banner-slider">
+      <div class="banner-container">
+
+       <!-- Slide 1: Mua 1 tặng 1 -->
+<div class="banner-slide active">
+  <div class="banner-content" style="background: linear-gradient(135deg, #4b2e2b, #6f4e37)">
+    <div class="banner-product">
+      <img src="./image/cafe_latte.png" alt="Cafe Latte" />
+      <img src="./image/cafe_sua.png" alt="Cafe Sữa" />
+    </div>
+    <div class="banner-text">
+      <span class="banner-tag">🔥 HOT DEAL</span>
+      <h3>Mua 1 Tặng 1</h3>
+      <p>Áp dụng cho tất cả Coffee từ 7h - 9h sáng hàng ngày</p>
+            <a href="javascript:void(0)" class="banner-btn" onclick="goToCategory('coffee')">Đặt ngay →</a>
+    </div>
+    <div class="banner-icon">
+      <i class="fa-solid fa-mug-hot"></i>
+    </div>
+  </div>
+</div>
+      <!-- Slide 2: Ưu đãi sinh viên -->
+<div class="banner-slide">
+  <div class="banner-content" style="background: linear-gradient(135deg, #c8a27c, #a67c52)">
+    <div class="banner-product">
+      <img src="./image/ts_matcha_latte.png" alt="Trà sữa Matcha Latte" />
+      <img src="./image/ts_dau_tay.png" alt="Trà sữa dâu tây" />
+    </div>
+    <div class="banner-text">
+      <span class="banner-tag">🎓 SINH VIÊN</span>
+      <h3>Ưu đãi sinh viên</h3>
+      <p>Giảm 10% khi xuất trình thẻ sinh viên</p>
+      <a href="javascript:void(0)" class="banner-btn" onclick="goToCategory('all')">Xem chi tiết →</a>
+    </div>
+    <div class="banner-icon">
+      <i class="fa-solid fa-user-graduate"></i>
+    </div>
+  </div>
+</div>
+
+        <!-- Slide 3: Cuối tuần -->
+<div class="banner-slide">
+  <div class="banner-content" style="background: linear-gradient(135deg, #e67e22, #d35400)">
+    <div class="banner-product">
+      <img src="./image/pho_mai_que.png" alt="Phô mai que" />
+      <img src="./image/xuc_xich.png" alt="Xúc xích" />
+    </div>
+    <div class="banner-text">
+      <span class="banner-tag">🎉 CUỐI TUẦN</span>
+      <h3>Cuối tuần vui vẻ</h3>
+      <p>Giảm 10% cho đơn hàng từ 100k vào Thứ 7 & Chủ Nhật</p>
+      <a href="javascript:void(0)" class="banner-btn" onclick="goToCategory('all')">Nhận ưu đãi →</a>
+    </div>
+    <div class="banner-icon">
+      <i class="fa-solid fa-calendar-week"></i>
+    </div>
+  </div>
+</div>
+        <!-- Slide 4: Combo tiết kiệm -->
+<div class="banner-slide">
+  <div class="banner-content" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">
+    <div class="banner-product">
+      <img src="./image/combo_1.png" alt="Combo">
+      <img src="./image/douong_1.png" alt="Đồ uống">
+    </div>
+    <div class="banner-text">
+      <span class="banner-tag">🍱 TIẾT KIỆM</span>
+      <h3>Combo tiết kiệm</h3>
+      <p>Mua combo đồ uống + đồ ăn vặt tiết kiệm đến 30k</p>
+      <a href="javascript:void(0)" class="banner-btn" onclick="goToCategory('combo')">Xem combo →</a>
+    </div>
+    <div class="banner-icon">  
+      <i class="fa-solid fa-bag-shopping"></i>
+    </div>
+  </div>
+</div>
+
+      <!-- Nút điều khiển -->
+      <button class="banner-prev" onclick="prevBanner()">❮</button>
+      <button class="banner-next" onclick="nextBanner()">❯</button>
+
+      <!-- Chấm tròn chỉ mục -->
+      <div class="banner-dots">
+        <span class="dot active" onclick="goToBanner(0)"></span>
+        <span class="dot" onclick="goToBanner(1)"></span>
+        <span class="dot" onclick="goToBanner(2)"></span>
+        <span class="dot" onclick="goToBanner(3)"></span>
+      </div>
+    </div>
 
     <!-- THẺ MENU -->
     <div class="khung-trang">
@@ -144,7 +241,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://www.pullscoffee.com/wp-content/uploads/2024/08/a15.png"
+              src="./image/cafe_sua_da.png"
               alt="Cafe sữa đá"
             />
             <div class="sanpham-bottom">
@@ -160,7 +257,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://png.pngtree.com/png-clipart/20250119/original/pngtree-hot-coffee-cup-png-image_20270196.png"
+              src="./image/cafe_den.png"
               alt="Cafe đen"
             />
             <div class="sanpham-bottom">
@@ -176,7 +273,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn2.fptshop.com.vn/unsafe/Uploads/images/tin-tuc/184885/Originals/cac-loai-ca-phe-pha-phin-1.jpg"
+              src="./image/cafe_phin.png"
               alt="Cafe phin"
             />
             <div class="sanpham-bottom">
@@ -190,12 +287,12 @@
           </div>
 
           <div class="sanpham">
-            <img class="sanpham-anh" src="image/latte.jpg" alt="Cafe Latte" />
+            <img class="sanpham-anh" src="./image/cafe_latte.png" alt="Cafe Latte" />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Cafe Latte', 35000)">+</button>
+              <button onclick="addToCart('Cafe Latte', 25000)">+</button>
               <div class="sanpham-info">
                 <div>Cafe Latte</div>
-                <div class="price">35.000đ</div>
+                <div class="price">25.000đ</div>
               </div>
               <button onclick="removeFromCart('Cafe Latte')">-</button>
             </div>
@@ -204,23 +301,55 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://simexcodl.com.vn/wp-content/uploads/2024/01/cach-pha-ca-phe-cot-dua-4.jpg"
-              alt="Cafe Sữa dừa"
+              src="./image/cafe_sua.png"
+              alt="Cafe Sữa"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Cafe Sữa dừa', 35000)">+</button>
+              <button onclick="addToCart('Cafe Sữa', 25000)">+</button>
               <div class="sanpham-info">
-                <div>Cafe Sữa dừa</div>
-                <div class="price">35.000đ</div>
+                <div>Cafe Sữa</div>
+                <div class="price">25.000đ</div>
               </div>
-              <button onclick="removeFromCart('Cafe Sữa dừa')">-</button>
+              <button onclick="removeFromCart('Cafe Sữa')">-</button>
             </div>
           </div>
 
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://file.hstatic.net/200000438087/article/09ae0476_5db5f262150_81e246ec768847d9a51ca18acfc29ee4.jpg"
+              src="./image/cafe_nau.png"
+              alt="Cafe nâu"
+            />
+            <div class="sanpham-bottom">
+              <button onclick="addToCart('Cafe nâu', 20000)">+</button>
+              <div class="sanpham-info">
+                <div>Cafe nâu</div>
+                <div class="price">20.000đ</div>
+              </div>
+              <button onclick="removeFromCart('Cafe nâu')">-</button>
+            </div>
+          </div>
+
+          <div class="sanpham">
+            <img
+              class="sanpham-anh"
+              src="./image/cafe_pho_mai_muoi.png"
+              alt="Cafe phô mai muối"
+            />
+            <div class="sanpham-bottom">
+              <button onclick="addToCart('Cafe phô mai muối', 40000)">+</button>
+              <div class="sanpham-info">
+                <div>Cafe phô mai muối</div>
+                <div class="price">40.000đ</div>
+              </div>
+              <button onclick="removeFromCart('Cafe phô mai muối')">-</button>
+            </div>
+          </div>
+
+          <div class="sanpham">
+            <img
+              class="sanpham-anh"
+              src="./image/cafe_muoi.png"
               alt="Cafe muối"
             />
             <div class="sanpham-bottom">
@@ -237,14 +366,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQngdOzxTQpt7viq9B2Lg9o7W4NLEuvnqKZgA&s"
+              src="./image/st_dau.jpg"
               alt="Sinh tố dâu"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Sinh tố dâu', 25000)">+</button>
+              <button onclick="addToCart('Sinh tố dâu', 35000)">+</button>
               <div class="sanpham-info">
                 <div>Sinh tố dâu</div>
-                <div class="price">25.000đ</div>
+                <div class="price">35.000đ</div>
               </div>
               <button onclick="removeFromCart('Sinh tố dâu')">-</button>
             </div>
@@ -253,14 +382,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://png.pngtree.com/png-clipart/20240308/original/pngtree-tasty-avocado-smoothie-in-glass-file-png-png-image_14536497.png"
+              src="./image/st_bo.png"
               alt="Sinh tố bơ"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Sinh tố bơ', 30000)">+</button>
+              <button onclick="addToCart('Sinh tố bơ', 35000)">+</button>
               <div class="sanpham-info">
                 <div>Sinh tố bơ</div>
-                <div class="price">30.000đ</div>
+                <div class="price">35.000đ</div>
               </div>
               <button onclick="removeFromCart('Sinh tố bơ')">-</button>
             </div>
@@ -269,14 +398,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://www.huongnghiepaau.com/wp-content/uploads/2022/07/mon-sinh-to-dao.jpg"
+              src="./image/st_dao.png"
               alt="Sinh tố đào"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Sinh tố đào', 30000)">+</button>
+              <button onclick="addToCart('Sinh tố đào', 35000)">+</button>
               <div class="sanpham-info">
                 <div>Sinh tố đào</div>
-                <div class="price">30.000đ</div>
+                <div class="price">35.000đ</div>
               </div>
               <button onclick="removeFromCart('Sinh tố đào')">-</button>
             </div>
@@ -285,7 +414,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2024_5_12_638511085664907773_sinh-to-chuoi-sua-chua.jpg"
+              src="./image/st_chuoi.png"
               alt="Sinh tố chuối"
             />
             <div class="sanpham-bottom">
@@ -301,7 +430,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://www.huongnghiepaau.com/wp-content/uploads/2021/05/sinh-to-tao-thom-ngon.jpg"
+              src="./image/st_tao.png"
               alt="Sinh tố táo"
             />
             <div class="sanpham-bottom">
@@ -317,7 +446,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://dayphache.edu.vn/wp-content/uploads/2016/02/cach-lam-sinh-to-xoai-sua-dac.jpg"
+              src="./image/st_xoai.png"
               alt="Sinh tố xoài"
             />
             <div class="sanpham-bottom">
@@ -330,20 +459,36 @@
             </div>
           </div>
 
+           <div class="sanpham">
+            <img
+              class="sanpham-anh"
+              src="./image/st_viet_quat.png"
+              alt="Sinh tố việt quất"
+            />
+            <div class="sanpham-bottom">
+              <button onclick="addToCart('Sinh tố việt quất', 30000)">+</button>
+              <div class="sanpham-info">
+                <div>Sinh tố việt quất</div>
+                <div class="price">30.000đ</div>
+              </div>
+              <button onclick="removeFromCart('Sinh tố việt quất')">-</button>
+            </div>
+          </div>
+
           <!-- TRÀ SỮA -->
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.nguyenkimmall.com/images/companies/_1/tin-tuc/kinh-nghiem-meo-hay/n%E1%BA%A5u%20%C4%83n/tra-sua-matcha-tran-chau-den.jpg"
+              src="./image/ts_matcha_latte.png"
               alt="Trà sữa Mattcha Latte"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà sữa Matcha Latte', 25000)">
+              <button onclick="addToCart('Trà sữa Matcha Latte', 28000)">
                 +
               </button>
               <div class="sanpham-info">
                 <div>Trà sữa Matcha Latte</div>
-                <div class="price">25.000đ</div>
+                <div class="price">28.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà sữa Matcha Latte')">
                 -
@@ -354,14 +499,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://attachment.momocdn.net/social/u/78379bd4c3631331243ed5a3cc7be5451bb0d40f2d5aead68cc2135272ba11c2/bc1add55-4b48-45df-b72d-539183893ac313iu0tm7.jpg"
+              src="./image/ts_socola.png"
               alt="Trà sữa Socola"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà sữa Socola', 25000)">+</button>
+              <button onclick="addToCart('Trà sữa Socola', 28000)">+</button>
               <div class="sanpham-info">
                 <div>Trà sữa Socola</div>
-                <div class="price">25.000đ</div>
+                <div class="price">28.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà sữa Socola')">-</button>
             </div>
@@ -370,23 +515,23 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://bizweb.dktcdn.net/100/421/036/files/tra-sua-dau-tam.jpg?v=1619422680643"
-              alt="Trà sữa dâu tằm"
+              src="./image/ts_dau_tay.png"
+              alt="Trà sữa dâu tây"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà sữa dâu tằm', 25000)">+</button>
+              <button onclick="addToCart('Trà sữa dâu tây', 30000)">+</button>
               <div class="sanpham-info">
-                <div>Trà sữa dâu tằm</div>
-                <div class="price">25.000đ</div>
+                <div>Trà sữa dâu tây</div>
+                <div class="price">30.000đ</div>
               </div>
-              <button onclick="removeFromCart('Trà sữa dâu tằm')">-</button>
+              <button onclick="removeFromCart('Trà sữa dâu tây')">-</button>
             </div>
           </div>
 
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://photo2.tinhte.vn/data/attachment-files/2025/01/8604577_cach_lam_tra_sua_kem_trung_nuong.jpg"
+              src="./image/ts_kem_trung.png"
               alt="Trà sữa kem trứng"
             />
             <div class="sanpham-bottom">
@@ -402,23 +547,24 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://png.pngtree.com/png-clipart/20240809/original/pngtree-blueberry-milkshake-transparent-background-png-image_15734937.png"
+              src="./image/ts_viet_quat.png"
               alt="Trà sữa việt quất"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà sữa việt quất', 20000)">+</button>
+              <button onclick="addToCart('Trà sữa việt quất', 30000)">+</button>
               <div class="sanpham-info">
                 <div>Trà sữa việt quất</div>
-                <div class="price">20.000đ</div>
+                <div class="price">30.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà sữa việt quất')">-</button>
             </div>
           </div>
 
+          
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://chillcoffeeandtea.com/wp-content/uploads/2023/11/Tra-sua-khoai-mon-1.jpg"
+              src="./image/ts_khoai_mon.png"
               alt="Trà sữa khoai môn"
             />
             <div class="sanpham-bottom">
@@ -434,7 +580,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://dayphache.edu.vn/wp-content/uploads/2018/05/01d8b43f4f3fa760f12ff89aa5d9028b.jpg"
+              src="./image/ts_bac_ha.png"
               alt="Trà sữa bạc hà"
             />
             <div class="sanpham-bottom">
@@ -450,7 +596,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://i.pinimg.com/736x/5c/61/ad/5c61adac33115a286411870a1ee44792.jpg"
+              src="./image/ts_kiwi.png"
               alt="Trà sữa Kiwi"
             />
             <div class="sanpham-bottom">
@@ -466,7 +612,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.tgdd.vn/Files/2021/08/10/1374190/cach-pha-tra-sua-o-long-truyen-thong-thom-ngon-de-lam-tai-nha-202202150918345821.jpg"
+              src="./image/ts_o_long.png"
               alt="Trà sữa Ô long"
             />
             <div class="sanpham-bottom">
@@ -483,14 +629,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://www.pullscoffee.com/wp-content/uploads/2024/08/le.png"
+              src="./image/dua_hau.png"
               alt="Nước ép dưa hấu"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Nước ép dưa hấu', 15000)">+</button>
+              <button onclick="addToCart('Nước ép dưa hấu', 20000)">+</button>
               <div class="sanpham-info">
                 <div>Nước ép dưa hấu</div>
-                <div class="price">15.000đ</div>
+                <div class="price">20.000đ</div>
               </div>
               <button onclick="removeFromCart('Nước ép dưa hấu')">-</button>
             </div>
@@ -499,14 +645,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://pushmax.vn/wp-content/uploads/2024/07/N%C6%B0%E1%BB%9Bc-%C3%A9p-cam-l%C3%A0m-%C4%91%E1%BA%B9p-da-n%E1%BB%AF.jpg"
+              src="./image/cam.jpg"
               alt="Nước ép cam"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Nước ép cam', 15000)">+</button>
+              <button onclick="addToCart('Nước ép cam', 20000)">+</button>
               <div class="sanpham-info">
                 <div>Nước ép cam</div>
-                <div class="price">15.000đ</div>
+                <div class="price">20.000đ</div>
               </div>
               <button onclick="removeFromCart('Nước ép cam')">-</button>
             </div>
@@ -515,14 +661,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://tiemphonui.com/cdn/shop/articles/nuoc-cot-chanh-day.webp?v=1693797609"
+              src="./image/chanh_day.png"
               alt="Nước ép chanh dây"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Nước ép chanh dây', 15000)">+</button>
+              <button onclick="addToCart('Nước ép chanh dây', 25000)">+</button>
               <div class="sanpham-info">
                 <div>Nước ép chanh dây</div>
-                <div class="price">15.000đ</div>
+                <div class="price">25.000đ</div>
               </div>
               <button onclick="removeFromCart('Nước ép chanh dây')">-</button>
             </div>
@@ -531,32 +677,32 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://elmich.vn/wp-content/uploads/2023/12/nuoc-ep-dua-luoi-0.jpg"
-              alt="Nước ép chanh lưới"
+              src="./image/dua_luoi.png"
+              alt="Nước ép dưa lưới"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Nước ép chanh lưới', 15000)">
+              <button onclick="addToCart('Nước ép dưa lưới', 25000)">
                 +
               </button>
               <div class="sanpham-info">
-                <div>Nước ép chanh lưới</div>
-                <div class="price">15.000đ</div>
+                <div>Nước ép dưa lưới</div>
+                <div class="price">25.000đ</div>
               </div>
-              <button onclick="removeFromCart('Nước ép chanh lưới')">-</button>
+              <button onclick="removeFromCart('Nước ép dưa lưới')">-</button>
             </div>
           </div>
 
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://lypham.vn/wp-content/uploads/2025/09/cach-lam-nuoc-ep-dua-thom-ngon.jpg"
+              src="./image/thom.png"
               alt="Nước ép thơm"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Nước ép thơm', 15000)">+</button>
+              <button onclick="addToCart('Nước ép thơm', 18000)">+</button>
               <div class="sanpham-info">
                 <div>Nước ép thơm</div>
-                <div class="price">15.000đ</div>
+                <div class="price">18.000đ</div>
               </div>
               <button onclick="removeFromCart('Nước ép thơm')">-</button>
             </div>
@@ -565,7 +711,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://photo.znews.vn/w660/Uploaded/sgorvz/2016_08_17/do_uong_5.jpg"
+              src="./image/ca_rot.png"
               alt="Nước ép cà rốt"
             />
             <div class="sanpham-bottom">
@@ -583,14 +729,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://tim-deli.vn/wp-content/uploads/2024/10/tra-dau-tam-500x5001-1.png"
+              src="./image/tra_dau_tam.png"
               alt="Trà dâu tằm"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà dâu tằm', 15000)">+</button>
+              <button onclick="addToCart('Trà dâu tằm', 20000)">+</button>
               <div class="sanpham-info">
                 <div>Trà dâu tằm</div>
-                <div class="price">15.000đ</div>
+                <div class="price">20.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà dâu tằm')">-</button>
             </div>
@@ -599,14 +745,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://media.suckhoecong.vn/thumb_x800x450/Images/Uploaded/Share/2023/12/14/cai-thien-suc-khoe-voi-tra-bac-ha-spearmint11702529601.jpg"
+              src="./image/tra_bac_ha.png"
               alt="Trà bạc hà"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà bạc hà', 12000)">+</button>
+              <button onclick="addToCart('Trà bạc hà', 18000)">+</button>
               <div class="sanpham-info">
                 <div>Trà bạc hà</div>
-                <div class="price">12.000đ</div>
+                <div class="price">18.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà bạc hà')">-</button>
             </div>
@@ -615,14 +761,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.tgdd.vn/Files/2018/08/14/1109521/cach-lam-tra-dao-cam-sa-giai-nhiet-hieu-qua-ngay-tai-nha-202112301524304318.jpg"
+              src="./image/dao_sa.png"
               alt="Trà đào cam sả"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà đào cam sả', 15000)">+</button>
+              <button onclick="addToCart('Trà đào cam sả', 22000)">+</button>
               <div class="sanpham-info">
                 <div>Trà đào cam sả</div>
-                <div class="price">15.000đ</div>
+                <div class="price">22.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà đào cam sả')">-</button>
             </div>
@@ -631,14 +777,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://horecavn.com/wp-content/uploads/2024/05/huong-dan-cong-thuc-tra-dao-cam-sa-hut-khach-ngon-kho-cuong_20240527003314.jpg"
+              src="./image/tra_dao.png"
               alt="Trà đào"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà đào', 15000)">+</button>
+              <button onclick="addToCart('Trà đào', 18000)">+</button>
               <div class="sanpham-info">
                 <div>Trà đào</div>
-                <div class="price">15.000đ</div>
+                <div class="price">18.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà đào')">-</button>
             </div>
@@ -647,14 +793,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://img.mservice.com.vn/common/u/2e02fb5fe4f64fb55bc713540643c6f8eae702d101cea8c59afc49cfc505fc37/b8f5db09-e9fb-4f29-96af-edceb7d7df34j7xetfrb.jpeg"
+              src="./image/tra_dau.png"
               alt="Trà dâu"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà dâu tây', 20000)">+</button>
+              <button onclick="addToCart('Trà dâu tây', 22000)">+</button>
               <div class="sanpham-info">
                 <div>Trà dâu tây</div>
-                <div class="price">20.000đ</div>
+                <div class="price">22.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà dâu tây')">-</button>
             </div>
@@ -663,14 +809,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn2.fptshop.com.vn/unsafe/640x0/filters:format(webp):quality(75)/2024_1_14_638408609225031854_cong-thuc-lam-nuoc-uong-tra-chanh-thai-xanh-de-giai-nhiet-mua-he.jpg"
+              src="./image/nha_dam.png"
               alt="Trà chanh nha đam"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà chanh nha đam', 15000)">+</button>
+              <button onclick="addToCart('Trà chanh nha đam', 18000)">+</button>
               <div class="sanpham-info">
                 <div>Trà chanh nha đam</div>
-                <div class="price">15.000đ</div>
+                <div class="price">18.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà chanh nha đam')">-</button>
             </div>
@@ -679,14 +825,14 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://vincentdanang.vn/wp-content/uploads/2025/05/pha-che-tra-chanh-1.png"
+              src="./image/tra_chanh.png"
               alt="Trà chanh"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Trà chanh', 15000)">+</button>
+              <button onclick="addToCart('Trà chanh', 18000)">+</button>
               <div class="sanpham-info">
                 <div>Trà chanh</div>
-                <div class="price">15.000đ</div>
+                <div class="price">18.000đ</div>
               </div>
               <button onclick="removeFromCart('Trà chanh')">-</button>
             </div>
@@ -696,7 +842,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.tgdd.vn/Products/Images/3487/234674/bhx/hat-huong-duong-vi-dua-chacheer-goi-130g-202102051533461550.jpg"
+              src="./image/huong_duong.png" alt="Hạt hướng dương"
             />
             <div class="sanpham-bottom">
               <button onclick="addToCart('Hạt hướng dương', 10000)">+</button>
@@ -711,7 +857,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2023_10_27_638339639184811505_anh-dai-dien.jpg"
+              src="./image/pho_mai_que.png"
               alt="Phô mai que"
             />
             <div class="sanpham-bottom">
@@ -727,7 +873,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2023_10_18_638332699956456125_cach-lam-xuc-xich.jpg"
+              src="./image/xuc_xich.png"
               alt="Xúc xích"
             />
             <div class="sanpham-bottom">
@@ -743,7 +889,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://market.nhovn.com/public/upload/images/L%E1%BA%A0P%20X%C6%AF%E1%BB%9ENG%20T%C6%AF%C6%A0I%20-%20NG%E1%BB%8CC%20PH%E1%BA%A0M%20HAGI-1.png"
+              src="./image/lap_xuong.png"
               alt="Lạp xưởng"
             />
             <div class="sanpham-bottom">
@@ -759,7 +905,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://winmart.onl/assets/media/images/products/07549/tomvien_1105_154753_VSU1zr.png"
+              src="./image/tom_vien.png"
               alt="Tôm viên chiên"
             />
             <div class="sanpham-bottom">
@@ -775,7 +921,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://bizweb.dktcdn.net/100/428/211/files/web-25-11-1-compressed.jpg?v=1637814245801"
+              src="./image/ca_vien.png"
               alt="Cá viên chiên"
             />
             <div class="sanpham-bottom">
@@ -791,7 +937,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2024_2_29_638447964779649276_cach-lam-bo-vien-chien-2.jpg"
+              src="./image/bo_vien.png"
               alt="Bò viên chiên"
             />
             <div class="sanpham-bottom">
@@ -807,7 +953,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://chovietakashi.com/wp-content/uploads/2024/09/nem-chua-ran.webp"
+              src="./image/nem.png"
               alt="Nem chua rán"
             />
             <div class="sanpham-bottom">
@@ -823,7 +969,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://static.vinwonders.com/production/bo-kho-da-nang-5.jpg"
+              src="./image/bo_kho.png"
               alt="Bò khô"
             />
             <div class="sanpham-bottom">
@@ -839,7 +985,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.shortpixel.ai/spai/q_lossless+w_1029+to_auto+ret_img/www.thatlangon.com/wp-content/uploads/2020/07/90333949_1866387380162151_5717023593246752768_n.jpg"
+              src="./image/dui_ga.png"
               alt="Đùi gà chiên KFC"
             />
             <div class="sanpham-bottom">
@@ -855,7 +1001,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHSmLsQd01ENsc2eICCKQOJiLiIGeWbmK88w&s"
+              src="./image/canh_ga.png"
               alt="Cánh gà chiên"
             />
             <div class="sanpham-bottom">
@@ -871,22 +1017,22 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://file.hstatic.net/200000700229/file/cach-lam-sui-cao-chien-1_c90dfd94876842e5873040fb07df884e.jpg"
+              src="./image/banh_goi.png"
             />
             <div class="sanpham-bottom">
-              <button onclick="addToCart('Sủi cảo chiên', 55000)">+</button>
+              <button onclick="addToCart('Bánh gối chiên', 55000)">+</button>
               <div class="sanpham-info">
-                <div>Sủi cảo chiên</div>
+                <div>Bánh gối chiên</div>
                 <div class="price">55.000đ</div>
               </div>
-              <button onclick="removeFromCart('Sủi cảo chiên')">-</button>
+              <button onclick="removeFromCart('Bánh gối chiên')">-</button>
             </div>
           </div>
 
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn2.fptshop.com.vn/unsafe/Uploads/images/tin-tuc/163279/Originals/khoai-tay-lac-pho-mai-2.JPG"
+              src="./image/khoai_tay_lac_pho_mai.png"
               alt="Khoai tây chiên lắc phô mai"
             />
             <div class="sanpham-bottom">
@@ -906,7 +1052,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.xanhsm.com/2024/12/57387692-cafe-24h-thu-duc-4.jpg"
+              src="./image/khoai_tay.png"
               alt="Khoai tây chiên"
             />
             <div class="sanpham-bottom">
@@ -922,7 +1068,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/kien-thuc/cach-lam-khoai-lang-chien-gion/cach-lam-khoai-lang-chien-gion-1.jpg"
+              src="./image/khoai_lang.png"
               alt="Khoai lang chiên"
             />
             <div class="sanpham-bottom">
@@ -938,7 +1084,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.shopify.com/s/files/1/0563/5745/4002/files/by_Cooking_Support_480x480.jpg?v=1626855811"
+              src="./image/hotdog.png"
               alt="Hotdog xúc xích phô mai"
             />
             <div class="sanpham-bottom">
@@ -959,7 +1105,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://blog.maybanhang.net/hs-fs/hubfs/banh-flan.jpg?width=700&name=banh-flan.jpg"
+              src="./image/flan.png"
               alt="Bánh FLAN"
             />
             <div class="sanpham-bottom">
@@ -975,7 +1121,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://daylambanh.edu.vn/wp-content/uploads/2019/06/cafe-van-phong.jpg"
+              src="./image/banh_ngot.png"
               alt="Bánh ngọt"
             />
             <div class="sanpham-bottom">
@@ -991,7 +1137,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://kemducphat.com/wp-content/uploads/2022/06/panna-5804.jpg"
+              src="./image/cotta.png"
               alt="Bánh Panna Cotta"
             />
             <div class="sanpham-bottom">
@@ -1007,7 +1153,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://kemducphat.com/wp-content/uploads/2022/06/maxresdefault.jpg"
+              src="./image/cookies.png"
               alt="Bánh Cookies"
             />
             <div class="sanpham-bottom">
@@ -1016,14 +1162,13 @@
                 <div>Bánh Cookies</div>
                 <div class="price">20.000đ</div>
               </div>
-              <button>-</button>
-            </div>
+<button onclick="removeFromCart('Bánh Cookies')">-</button>            </div>
           </div>
 
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://kemducphat.com/wp-content/uploads/2022/06/img_62a061385f69e.png"
+              src="./image/tiramisu.png"
               alt="Tiramisu"
             />
             <div class="sanpham-bottom">
@@ -1039,7 +1184,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://kemducphat.com/wp-content/uploads/2022/06/phan-biet-banh-muffin-va-cupcake1.jpg"
+              src="./image/muffin.png"
               alt="Bánh Muffin"
             />
             <div class="sanpham-bottom">
@@ -1055,7 +1200,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cdn.tgdd.vn/Files/2021/10/01/1387080/tong-hop-cac-cach-tao-hinh-banh-mi-hap-dan-dep-nhu-ngoai-hang-202110011514068944.jpg"
+              src="./image/banh_mi.png"
               alt="Bánh Mì"
             />
             <div class="sanpham-bottom">
@@ -1071,7 +1216,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://kemducphat.com/wp-content/uploads/2022/06/thumbhcn-1200x676-1.jpg"
+              src="./image/macaron.png"
               alt="Bánh Macaron"
             />
             <div class="sanpham-bottom">
@@ -1087,7 +1232,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://kemducphat.com/wp-content/uploads/2022/06/1_maxresdefault.jpg"
+              src="./image/cake.png"
             />
             <div class="sanpham-bottom">
               <button onclick="addToCart('Bánh Mousse Cake', 25000)">+</button>
@@ -1102,7 +1247,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://kemducphat.com/wp-content/uploads/2022/06/img_62a06184894e2.png"
+              src="./image/cheese.png"
               alt="Bánh Cheese Cake"
             />
             <div class="sanpham-bottom">
@@ -1118,7 +1263,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://topquangbinh.vn/wp-content/uploads/2021/04/An-vat-Lucky-1.jpg"
+              src="./image/anvat_1.png"
               alt="Combo đồ ăn vặt 1"
             />
             <div class="sanpham-bottom">
@@ -1134,7 +1279,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://storage.googleapis.com/onelife-public/10.1.6.248/2021/11/cach-lam-mam-an-vat-khong-lo-mon-nhau-227442037595.jpg"
+              src="./image/anvat_2.png"
               alt="Combo đồ ăn vặt 2"
             />
             <div class="sanpham-bottom">
@@ -1150,7 +1295,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://png.pngtree.com/png-vector/20240705/ourmid/pngtree-golden-fried-chicken-with-crispy-french-fries-png-image_12950142.png"
+              src="./image/anvat_3.png"
               alt="Combo đồ ăn vặt 3"
             />
             <div class="sanpham-bottom">
@@ -1166,7 +1311,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://bizweb.dktcdn.net/100/440/789/products/z2980803716637-8893feeff06a255cf3543170f2437ffe.jpg?v=1638268536737"
+              src="./image/anvat_4.png"
               alt="Combo đồ ăn vặt 4"
             />
             <div class="sanpham-bottom">
@@ -1179,28 +1324,12 @@
             </div>
           </div>
 
-          <div class="sanpham">
-            <img
-              class="sanpham-anh"
-              src="https://danhgiathuonghieu.vn/wp-content/uploads/2024/03/nem-chua-ran-ngon-nhat-ha-noi9.jpg"
-              alt="Combo đồ ăn vặt 5"
-            />
-            <div class="sanpham-bottom">
-              <button onclick="addToCart('Combo đồ ăn vặt 5', 65000)">+</button>
-              <div class="sanpham-info">
-                <div>Combo đồ ăn vặt 5</div>
-                <div class="price">65.000đ</div>
-              </div>
-              <button onclick="removeFromCart('Combo đồ ăn vặt 5')">-</button>
-            </div>
-          </div>
-
           <!-- COMBO ĐỒ UỐNG -->
 
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://baristaschool.vn/wp-content/uploads/2023/10/nguon-goc-ra-doi-mojito.webp"
+              src="./image/douong_1.png"
               alt="Combo đồ uống 1"
             />
             <div class="sanpham-bottom">
@@ -1216,7 +1345,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://baristaschool.vn/wp-content/uploads/2023/09/ca-phe-cold-brew-la-gi-khac-gi-voi-ca-phe-thuong-760x367-1.jpg"
+              src="./image/douong_2.png"
               alt="Combo đồ uống 2"
             />
             <div class="sanpham-bottom">
@@ -1232,7 +1361,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://baristaschool.vn/wp-content/uploads/2023/10/bot-frappe-la-gi.jpg"
+              src="./image/douong_3.png"
               alt="Combo đồ uống 3"
             />
             <div class="sanpham-bottom">
@@ -1245,12 +1374,60 @@
             </div>
           </div>
 
+          <div class="sanpham">
+            <img
+              class="sanpham-anh"
+              src="./image/douong_4.png"
+              alt="Combo đồ uống 4"
+            />
+            <div class="sanpham-bottom">
+              <button onclick="addToCart('Combo đồ uống 4', 55000)">+</button>
+              <div class="sanpham-info">
+                <div>Combo đồ uống 4</div>
+                <div class="price">55.000đ</div>
+              </div>
+              <button onclick="removeFromCart('Combo đồ uống 4')">-</button>
+            </div>
+          </div>
+
+          <div class="sanpham">
+            <img
+              class="sanpham-anh"
+              src="./image/douong_5.png"
+              alt="Combo đồ uống 5"
+            />
+            <div class="sanpham-bottom">
+              <button onclick="addToCart('Combo đồ uống 5', 55000)">+</button>
+              <div class="sanpham-info">
+                <div>Combo đồ uống 5</div>
+                <div class="price">55.000đ</div>
+              </div>
+              <button onclick="removeFromCart('Combo đồ uống 5')">-</button>
+            </div>
+          </div>
+
+          <div class="sanpham">
+            <img
+              class="sanpham-anh"
+              src="./image/douong_6.png"
+              alt="Combo đồ uống 6"
+            />
+            <div class="sanpham-bottom">
+              <button onclick="addToCart('Combo đồ uống 6', 55000)">+</button>
+              <div class="sanpham-info">
+                <div>Combo đồ uống 6</div>
+                <div class="price">55.000đ</div>
+              </div>
+              <button onclick="removeFromCart('Combo đồ uống 6')">-</button>
+            </div>
+          </div>
+
           <!-- COMBO -->
 
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://static.hotdeal.vn/images/871/871279/500x500/207068-combo-do-uong-do-an-danh-cho-2-nguoi-tai-ca-phe-am.jpg"
+              src="./image/combo_1.png"
               alt="Combo 1"
             />
             <div class="sanpham-bottom">
@@ -1266,7 +1443,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://static.hotdeal.vn/images/1541/1541461/60x60/350377-.jpg"
+              src="./image/combo_2.png"
               alt="Combo 2"
             />
             <div class="sanpham-bottom">
@@ -1282,7 +1459,7 @@
           <div class="sanpham">
             <img
               class="sanpham-anh"
-              src="https://cubes-asia.com/storage/blogs/2024-09/cac-loai-do-uong-trong-quan-ca-phe-duoc-khach.jpg"
+              src="./image/combo_3.png"
               alt="Combo 3"
             />
             <div class="sanpham-bottom">
@@ -1295,8 +1472,8 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
+  </div>
     <footer>
       <div class="footer-container">
         <div class="footer-left">
@@ -1407,7 +1584,7 @@
             Quét mã để thanh toán đơn hàng:
           </p>
           <img
-            src=""
+            src="./image/qr.jpg"
             alt="QR Code"
             id="qr-image"
             style="
@@ -1418,7 +1595,7 @@
             "
           />
           <p style="font-weight: bold; color: #4b2e2e; margin-top: 10px">
-            STK: 0123456789 - MB Bank
+            STK: 0123456789 - Techcombank
           </p>
         </div>
 
@@ -1432,9 +1609,9 @@
       </div>
     </div>
 
-    <div id="success-popup" class="popup">
-      <div class="popup-content" style="text-align: center; line-height: 1.6">
-        <h2 style="color: #27ae60">🎉 Đặt hàng thành công!</h2>
+    <div id="success-popup" class="popup" onclick="closeSuccessPopupOnOutside(event)">
+  <div class="popup-content" onclick="event.stopPropagation()">
+    <h2 style="color: #27ae60">🎉 Đặt hàng thành công!</h2>
         <div
           style="
             background: #fdf2e9;
@@ -1481,17 +1658,19 @@
       </div>
     </div>
 
-    <a href="tel:0338909486" class="nut-hotline">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
-        alt="Hotline"
-        width="30"
-        style="filter: brightness(0) invert(1)"
-      />
-    </a>
-    <a href="https://zalo.me/0338909486" target="_blank" class="nut-zalo">
+    <a href="tel:0123456789" class="nut-hotline" onclick="handleHotlineClick(event)">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png"
+    alt="Hotline"
+    width="30"
+    style="filter: brightness(0) invert(1)"
+  />
+</a>
+
+    <a href="https://zalo.me/0123456789" target="_blank" class="nut-zalo">
       Zalo
     </a>
+
     <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="nut-messenger">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg"
@@ -1504,8 +1683,6 @@
       id="toast-container"
       style="position: fixed; top: 20px; right: 20px; z-index: 10000"
     ></div>
-
-    <script src="script.js"></script>
 
     <!-- POPUP CHI TIẾT SẢN PHẨM -->
     <div id="product-detail-popup" class="product-detail-popup">
@@ -1524,20 +1701,6 @@
             </div>
             <div class="product-detail-desc" id="detail-product-desc">
               Mô tả sản phẩm sẽ hiển thị tại đây...
-            </div>
-
-            <!-- Chọn size -->
-            <div class="size-options">
-              <h4>Chọn size:</h4>
-              <button class="size-btn" data-size="S" data-multiplier="1">
-                S
-              </button>
-              <button class="size-btn" data-size="M" data-multiplier="1.2">
-                M (+20%)
-              </button>
-              <button class="size-btn" data-size="L" data-multiplier="1.5">
-                L (+50%)
-              </button>
             </div>
 
             <!-- Số lượng -->
@@ -1566,5 +1729,12 @@
         </div>
       </div>
     </div>
+
+        <!-- Thư viện và file JS -->
+<script src="thong_bao.js"></script>
+<script src="trang_chu.js"></script>
+<script src="account.js"></script>
+<script src="voucher.js"></script>
+<script src="script.js"></script>
   </body>
 </html>

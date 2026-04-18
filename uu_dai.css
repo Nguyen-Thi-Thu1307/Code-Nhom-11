@@ -1,0 +1,412 @@
+/* =====================
+   UU_DAI.CSS - CSS RIÊNG CHO TRANG ƯU ĐÃI
+   ===================== */
+
+.uudai-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fdfaf7;
+  min-height: 80vh;
+}
+
+.uudai-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.uudai-header h1 {
+  color: #4b2e2b;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.uudai-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Grid ưu đãi */
+.uudai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Thẻ ưu đãi */
+.uudai-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.uudai-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Phần icon ưu đãi */
+.uudai-image {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: white;
+  font-size: 48px;
+}
+
+/* Phần nội dung */
+.uudai-info {
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+}
+
+.uudai-info h3 {
+  color: #4b2e2b;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.uudai-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Tag ưu đãi */
+.uudai-tag {
+  display: inline-block;
+  background: #ff4d4d;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Đếm ngược */
+.countdown {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 15px 0;
+  font-weight: bold;
+  color: #e67e22;
+  font-size: 16px;
+}
+
+/* Nút bấm */
+.btn-uu-dai {
+  display: inline-block;
+  background: #4b2e2b;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn-uu-dai:hover {
+  background: #6f4e37;
+}
+
+/* Badge sự kiện */
+.event-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #ff4d4d;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  transform: rotate(5deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .uudai-container {
+    padding: 30px 15px;
+  }
+  .uudai-grid {
+    grid-template-columns: 1fr;
+  }
+  .uudai-header h1 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .uudai-container {
+    padding: 20px 10px;
+  }
+  .uudai-image {
+    height: 120px;
+    font-size: 36px;
+  }
+  .uudai-info h3 {
+    font-size: 18px;
+  }
+  .uudai-info p {
+    font-size: 12px;
+  }
+  .btn-uu-dai {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* =====================
+   PHẦN MÔ TẢ CHI TIẾT ƯU ĐÃI
+   ===================== */
+.uudai-details {
+  margin-top: 50px;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.uudai-details-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.uudai-details-header h2 {
+  color: #4b2e2b;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.uudai-details-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Căn đều văn bản cho tất cả các đoạn mô tả */
+.uudai-detail-card .detail-content p,
+.uudai-general-info li,
+.seasonal-promo-card p,
+.uudai-detail-card .detail-content,
+.uudai-general-info {
+  text-align: justify;
+}
+
+.uudai-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.uudai-detail-card {
+  background: #fdfaf7;
+  border-radius: 16px;
+  padding: 20px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.uudai-detail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.uudai-detail-card .detail-icon {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.uudai-detail-card h3 {
+  text-align: center;
+  color: #4b2e2b;
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #c8a27c;
+  display: inline-block;
+  width: auto;
+}
+
+.uudai-detail-card .detail-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.uudai-detail-card .detail-content strong {
+  color: #4b2e2b;
+}
+
+/* Ưu đãi đặc biệt (theo mùa) */
+.seasonal-promos {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.seasonal-promos h3 {
+  color: #4b2e2b;
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #c8a27c;
+  display: inline-block;
+}
+
+.seasonal-promos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.seasonal-promo-card {
+  background: linear-gradient(135deg, #fff9f0, #fff5e6);
+  border-radius: 16px;
+  padding: 20px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  border-left: 5px solid;
+}
+
+.seasonal-promo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.seasonal-promo-card .promo-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.seasonal-promo-card h4 {
+  color: #4b2e2b;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.seasonal-promo-card .promo-date {
+  font-size: 12px;
+  color: #e67e22;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.seasonal-promo-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.seasonal-promo-card .promo-discount {
+  display: inline-block;
+  background: #ff4d4d;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Màu sắc cho từng ưu đãi đặc biệt */
+.seasonal-promo-card.valentine {
+  border-left-color: #ff6b6b;
+}
+.seasonal-promo-card.women-day {
+  border-left-color: #e91e63;
+}
+.seasonal-promo-card.liberation {
+  border-left-color: #d32f2f;
+}
+.seasonal-promo-card.labor {
+  border-left-color: #1565c0;
+}
+.seasonal-promo-card.mid-autumn {
+  border-left-color: #ff9800;
+}
+.seasonal-promo-card.national {
+  border-left-color: #e65100;
+}
+.seasonal-promo-card.halloween {
+  border-left-color: #6a1b9a;
+}
+.seasonal-promo-card.black-friday {
+  border-left-color: #212121;
+}
+.seasonal-promo-card.christmas {
+  border-left-color: #2e7d32;
+}
+
+/* Thông tin chung */
+.uudai-general-info {
+  background: #fff9f0;
+  border-radius: 16px;
+  padding: 20px;
+  border-left: 5px solid #e67e22;
+}
+
+.uudai-general-info h3 {
+  color: #4b2e2b;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.uudai-general-info ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.uudai-general-info li {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .uudai-details {
+    padding: 20px;
+  }
+  .uudai-details-header h2 {
+    font-size: 22px;
+  }
+  .uudai-detail-card h3 {
+    font-size: 18px;
+  }
+  .seasonal-promos h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .uudai-details {
+    padding: 15px;
+  }
+  .uudai-details-grid,
+  .seasonal-promos-grid {
+    grid-template-columns: 1fr;
+  }
+}
